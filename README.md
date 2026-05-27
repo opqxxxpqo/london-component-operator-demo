@@ -31,3 +31,7 @@ npm run build
 3. Deploy.
 
 All app data is local mock data in `src/data/mockData.js`; there is no backend, database, or authentication layer.
+
+## GitHub Pages
+
+This repository includes a GitHub Actions workflow that builds and deploys the demo to GitHub Pages whenever `main` is updated.
