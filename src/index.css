@@ -4,7 +4,7 @@
 
 :root {
   color: #1a1a1a;
-  background: #fafafa;
+  background: #f6f2ea;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -19,7 +19,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #fafafa;
+  background: #f6f2ea;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -34,4 +34,167 @@ button {
 
 .safe-bottom {
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.app-shell {
+  background:
+    linear-gradient(90deg, rgba(31, 77, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(31, 77, 63, 0.035) 1px, transparent 1px),
+    #f6f2ea;
+  background-size: 44px 44px, 44px 44px, auto;
+}
+
+.route-shell {
+  animation: route-in 360ms ease both;
+}
+
+.ops-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(68, 61, 50, 0.11);
+  background: #fffcf7;
+  box-shadow: 0 14px 34px rgba(48, 42, 32, 0.07);
+}
+
+.ops-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background:
+    linear-gradient(90deg, rgba(31, 77, 63, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(31, 77, 63, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.26), transparent 45%);
+}
+
+.ops-section {
+  position: relative;
+  z-index: 1;
+}
+
+.ops-kicker {
+  color: #7a6f61;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.asset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(31, 77, 63, 0.16);
+  border-radius: 999px;
+  background: rgba(31, 77, 63, 0.075);
+  color: #1f4d3f;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.32rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.eta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  background: #f4e5d3;
+  color: #8a531b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  padding: 0.35rem 0.62rem;
+}
+
+.node-pulse {
+  animation: node-pulse 2.8s ease-out infinite;
+}
+
+.dispatch-flow {
+  animation: dispatch-flow 1.5s linear infinite;
+}
+
+.timeline-reveal {
+  animation: timeline-reveal 520ms ease both;
+}
+
+.metric-rise {
+  animation: metric-rise 460ms ease both;
+}
+
+@keyframes route-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes metric-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes timeline-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes node-pulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(2.25);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.25);
+  }
+}
+
+@keyframes dispatch-flow {
+  from {
+    stroke-dashoffset: 18;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }

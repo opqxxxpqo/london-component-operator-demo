@@ -11,10 +11,13 @@ export default function App() {
   const isDetailPage = /^\/components\/[^/]+$/.test(location.pathname);
 
   return (
-    <div className="min-h-screen bg-canvas text-ink">
-      <div className="mx-auto min-h-screen w-full max-w-[430px] border-x border-neutral-200/60 bg-canvas">
+    <div className="app-shell min-h-screen text-ink">
+      <div className="mx-auto min-h-screen w-full max-w-[430px] border-x border-[#ded7ca] bg-canvas/95">
         <AppHeader showBack={isDetailPage} />
-        <main className={isDetailPage ? 'pb-8' : 'pb-28'}>
+        <main
+          key={location.pathname}
+          className={`route-shell ${isDetailPage ? 'pb-8' : 'pb-28'}`}
+        >
           <Routes>
             <Route path="/" element={<Navigate to="/overview" replace />} />
             <Route path="/overview" element={<Overview />} />
