@@ -4,21 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#F6F2EA',
-        surface: '#FFFCF7',
-        rail: '#E3DDD1',
-        ink: '#1A1A1A',
-        muted: '#6B6B6B',
-        faint: '#A0A0A0',
-        accent: '#1F4D3F',
-        transit: '#B8742A',
+        canvas: '#061B1F',
+        surface: '#0A2428',
+        rail: '#16343A',
+        ink: '#F7FAF8',
+        muted: '#B8C4C6',
+        faint: '#71878C',
+        accent: '#9CF22A',
+        transit: '#D4F45A',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 14px 34px rgba(48, 42, 32, 0.07)',
-        lift: '0 22px 60px rgba(48, 42, 32, 0.11)',
+        soft: '0 18px 38px rgba(0, 0, 0, 0.28)',
+        lift: '0 26px 70px rgba(0, 0, 0, 0.38)',
       },
     },
   },

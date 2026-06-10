@@ -2,6 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 
 export default function MetricCard({ label, value, trend, signal }) {
   const animatedValue = useCountUpValue(value);
+  const valueParts = animatedValue.split(' ');
+  const hasUnit = valueParts.length > 1;
+  const valueSizeClass = hasUnit
+    ? 'text-[2.05rem]'
+    : value.length >= 8
+      ? 'text-[1.55rem]'
+      : 'text-[2.05rem]';
 
   return (
     <article className="ops-card rounded-xl p-4">
@@ -10,10 +17,20 @@ export default function MetricCard({ label, value, trend, signal }) {
           <p className="min-h-9 text-xs font-extrabold uppercase leading-4 tracking-[0.06em] text-muted">
             {label}
           </p>
-          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(31,77,63,0.10)]" />
+          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(156,242,42,0.14)]" />
         </div>
-        <p className="metric-rise mt-5 text-[2.05rem] font-black leading-[0.92] tracking-normal text-ink">
-          {animatedValue}
+        <p className={`metric-rise mt-5 whitespace-nowrap ${valueSizeClass} font-black leading-[0.92] tracking-normal text-ink`}>
+          {hasUnit ? (
+            <>
+              <span className="block">{valueParts[0]}</span>
+              {' '}
+              <span className="mt-1 block text-sm font-black uppercase leading-none text-muted">
+                {valueParts.slice(1).join(' ')}
+              </span>
+            </>
+          ) : (
+            animatedValue
+          )}
         </p>
         <div className="mt-4 flex items-center justify-between gap-2">
           <p className="text-xs font-extrabold text-accent">{trend}</p>

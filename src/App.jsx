@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className="app-shell min-h-screen text-ink">
-      <div className="mx-auto min-h-screen w-full max-w-[430px] border-x border-[#ded7ca] bg-canvas/95">
+      <div className="mx-auto min-h-screen w-full max-w-[430px] border-x border-[#173840] bg-canvas/95">
         <AppHeader showBack={isDetailPage} />
         <main
           key={location.pathname}
