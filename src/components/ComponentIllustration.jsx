@@ -1,5 +1,5 @@
 const accent = '#9CF22A';
-const stroke = '#244D55';
+const stroke = '#1A3A30';
 const transit = '#D4F45A';
 
 export default function ComponentIllustration({ category, className = '' }) {
@@ -10,9 +10,9 @@ export default function ComponentIllustration({ category, className = '' }) {
       role="img"
       aria-label={`${category} component illustration`}
     >
-      <rect width="96" height="72" rx="8" fill="#0E2B30" />
-      <path d="M8 14H88M8 36H88M8 58H88" stroke="#173840" strokeWidth="0.7" />
-      <path d="M14 8V64M48 8V64M82 8V64" stroke="#173840" strokeWidth="0.7" />
+      <rect width="96" height="72" rx="8" fill="#071D16" />
+      <path d="M8 14H88M8 36H88M8 58H88" stroke="#10241C" strokeWidth="0.7" />
+      <path d="M14 8V64M48 8V64M82 8V64" stroke="#10241C" strokeWidth="0.7" />
       <path
         d="M12 58C26 45 39 48 49 35C60 22 74 23 84 12"
         fill="none"
@@ -33,8 +33,8 @@ function renderShape(category) {
   if (category === 'Partitions') {
     return (
       <>
-        <rect x="22" y="13" width="21" height="45" rx="2" fill="#061B1F" stroke={accent} strokeWidth="2" />
-        <rect x="45" y="13" width="28" height="45" rx="2" fill="#061B1F" stroke={accent} strokeWidth="2" />
+        <rect x="22" y="13" width="21" height="45" rx="2" fill="#020A07" stroke={accent} strokeWidth="2" />
+        <rect x="45" y="13" width="28" height="45" rx="2" fill="#020A07" stroke={accent} strokeWidth="2" />
         <path d="M32 18V54M59 18V54" stroke={stroke} strokeWidth="1.5" />
       </>
     );
@@ -45,7 +45,7 @@ function renderShape(category) {
       <>
         <path d="M22 33H74" stroke={accent} strokeWidth="5" strokeLinecap="round" />
         <path d="M30 35V57M66 35V57" stroke={accent} strokeWidth="3" strokeLinecap="round" />
-        <rect x="34" y="20" width="28" height="10" rx="3" fill="#061B1F" stroke={stroke} strokeWidth="2" />
+        <rect x="34" y="20" width="28" height="10" rx="3" fill="#020A07" stroke={stroke} strokeWidth="2" />
       </>
     );
   }
@@ -53,8 +53,8 @@ function renderShape(category) {
   if (category === 'Pods') {
     return (
       <>
-        <rect x="24" y="12" width="48" height="48" rx="7" fill="#061B1F" stroke={accent} strokeWidth="2.5" />
-        <rect x="37" y="22" width="22" height="20" rx="3" fill="#0E2B30" stroke={stroke} strokeWidth="2" />
+        <rect x="24" y="12" width="48" height="48" rx="7" fill="#020A07" stroke={accent} strokeWidth="2.5" />
+        <rect x="37" y="22" width="22" height="20" rx="3" fill="#071D16" stroke={stroke} strokeWidth="2" />
         <circle cx="63" cy="38" r="2" fill={accent} />
       </>
     );
@@ -73,7 +73,7 @@ function renderShape(category) {
 
   return (
     <>
-      <rect x="25" y="18" width="46" height="36" rx="6" fill="#061B1F" stroke={accent} strokeWidth="2" />
+      <rect x="25" y="18" width="46" height="36" rx="6" fill="#020A07" stroke={accent} strokeWidth="2" />
       <path d="M34 30H62M34 42H56" stroke={stroke} strokeWidth="2" strokeLinecap="round" />
     </>
   );

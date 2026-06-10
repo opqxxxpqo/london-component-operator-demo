@@ -58,8 +58,8 @@ export default function Components() {
         </div>
       </section>
 
-      <section className="sticky top-[73px] z-20 -mx-5 space-y-3 border-y border-[#173840]/80 bg-canvas px-5 py-3">
-        <label className="flex h-12 items-center gap-3 rounded-xl border border-[#244D55] bg-surface px-4 shadow-soft">
+      <section className="sticky top-[73px] z-20 -mx-5 space-y-3 border-y border-[#10241C]/80 bg-canvas px-5 py-3">
+        <label className="flex h-12 items-center gap-3 rounded-xl border border-[#1A3A30] bg-surface px-4 shadow-soft">
           <Search size={18} className="shrink-0 text-faint" strokeWidth={2.2} />
           <input
             value={query}
@@ -79,8 +79,8 @@ export default function Components() {
                 className={[
                   'shrink-0 rounded-full border px-4 py-2 text-sm font-extrabold transition-colors',
                   isActive
-                    ? 'border-accent bg-accent text-[#061B1F] shadow-soft'
-                    : 'border-[#244D55] bg-surface text-muted',
+                    ? 'border-accent bg-accent text-[#020A07] shadow-soft'
+                    : 'border-[#1A3A30] bg-surface text-muted',
                 ].join(' ')}
               >
                 {filter}
@@ -142,7 +142,7 @@ export default function Components() {
                 <RecordCell label="Bay" value={component.bay} wide />
               </div>
 
-              <div className="mt-3 flex items-center justify-between rounded-xl border border-[#244D55] bg-[#0E2B30] px-3 py-2">
+              <div className="mt-3 flex items-center justify-between rounded-xl border border-[#1A3A30] bg-[#071D16] px-3 py-2">
                 <div className="flex items-center gap-2">
                   <ClipboardCheck size={15} className="text-accent" strokeWidth={2.4} />
                   <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
@@ -166,7 +166,7 @@ export default function Components() {
 
 function FleetStat({ label, value }) {
   return (
-    <div className="rounded-xl border border-[#244D55] bg-surface px-3 py-3 shadow-soft">
+    <div className="rounded-xl border border-[#1A3A30] bg-surface px-3 py-3 shadow-soft">
       <p className="text-lg font-black leading-none text-ink">{value}</p>
       <p className="mt-2 text-[0.64rem] font-black uppercase tracking-[0.06em] text-muted">
         {label}
@@ -177,7 +177,7 @@ function FleetStat({ label, value }) {
 
 function RecordCell({ label, value, accent = false, wide = false }) {
   return (
-    <div className={`${wide ? 'col-span-2' : ''} rounded-xl bg-[#0E2B30] px-2.5 py-2`}>
+    <div className={`${wide ? 'col-span-2' : ''} rounded-xl bg-[#071D16] px-2.5 py-2`}>
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>

@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#061B1F',
-        surface: '#0A2428',
-        rail: '#16343A',
+        canvas: '#020A07',
+        surface: '#05130F',
+        rail: '#10241C',
         ink: '#F7FAF8',
         muted: '#B8C4C6',
         faint: '#71878C',
