@@ -1,6 +1,7 @@
 import { ArrowUpRight, Barcode, ClipboardCheck, LocateFixed, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ConditionMeter from '../components/ConditionMeter.jsx';
 import ComponentIllustration from '../components/ComponentIllustration.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
 import { components } from '../data/mockData.js';
@@ -128,11 +129,8 @@ export default function Components() {
                     <p className="min-w-0 truncate">{component.location}</p>
                   </div>
 
-                  <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#e7dfd2]">
-                    <div
-                      className="h-full rounded-full bg-accent"
-                      style={{ width: `${parseInt(component.conditionScore, 10)}%` }}
-                    />
+                  <div className="mt-3">
+                    <ConditionMeter value={component.conditionScore} compact />
                   </div>
                 </div>
               </div>
@@ -151,7 +149,12 @@ export default function Components() {
                     Last inspection
                   </p>
                 </div>
-                <p className="text-xs font-black text-ink">{component.lastInspection}</p>
+                <div className="text-right">
+                  <p className="text-xs font-black text-ink">{component.lastInspection}</p>
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.05em] text-faint">
+                    Next {component.nextService}
+                  </p>
+                </div>
               </div>
             </div>
           </Link>

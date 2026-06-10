@@ -68,14 +68,23 @@ export default function Overview() {
           {operationsPulse.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-[#ded7ca] bg-surface/80 px-3 py-3 shadow-soft"
+              className="readout px-3 py-3"
             >
               <p className="text-lg font-black leading-none text-ink">{item.value}</p>
               <p className="mt-2 text-[0.63rem] font-extrabold uppercase leading-3 tracking-[0.05em] text-muted">
                 {item.label}
               </p>
+              <p className="mt-1 truncate text-[0.58rem] font-black uppercase tracking-[0.04em] text-faint">
+                {item.detail}
+              </p>
             </div>
           ))}
+        </div>
+
+        <div className="command-strip">
+          <CommandSignal icon={Truck} label="North-east corridor" value="Normal" />
+          <CommandSignal icon={Factory} label="Refit queue" value="11 bays" />
+          <CommandSignal icon={CheckCircle2} label="48h SLA" value="96%" />
         </div>
       </section>
 
@@ -195,6 +204,22 @@ export default function Overview() {
           </ResponsiveContainer>
         </div>
       </section>
+    </div>
+  );
+}
+
+function CommandSignal({ icon: Icon, label, value }) {
+  return (
+    <div className="min-w-0 flex items-center gap-2">
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#e5eee8] text-accent">
+        <Icon size={14} strokeWidth={2.4} />
+      </div>
+      <div className="min-w-0">
+        <p className="truncate text-[0.6rem] font-black uppercase tracking-[0.06em] text-faint">
+          {label}
+        </p>
+        <p className="truncate text-xs font-black text-ink">{value}</p>
+      </div>
     </div>
   );
 }

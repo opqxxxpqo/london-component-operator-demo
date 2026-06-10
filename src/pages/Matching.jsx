@@ -252,29 +252,39 @@ export default function Matching() {
 function DispatchRoute({ active }) {
   return (
     <div className="ops-card rounded-2xl p-4">
-      <div className="ops-section flex items-center justify-between gap-3">
-        <RoutePoint icon={Warehouse} label="Stratford" detail="Pick + scan" />
-        <div className="relative h-12 flex-1">
-          <svg viewBox="0 0 120 48" className="h-full w-full" aria-hidden="true">
-            <path
-              d="M6 24C36 7 71 41 114 18"
-              fill="none"
-              stroke="#D8D0C2"
-              strokeLinecap="round"
-              strokeWidth="3"
-            />
-            <path
-              className="dispatch-flow"
-              d="M6 24C36 7 71 41 114 18"
-              fill="none"
-              stroke={active ? '#B8742A' : '#1F4D3F'}
-              strokeDasharray="8 10"
-              strokeLinecap="round"
-              strokeWidth="3"
-            />
-          </svg>
+      <div className="ops-section space-y-3">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-[0.62rem] font-black uppercase tracking-[0.07em] text-faint">
+            Routing confidence
+          </p>
+          <span className={active ? 'eta-pill' : 'asset-chip'}>
+            {active ? 'In transit' : '91% reuse fit'}
+          </span>
         </div>
-        <RoutePoint icon={MapPin} label="EC2A" detail={active ? 'In transit' : 'Reserved'} />
+        <div className="flex items-center justify-between gap-3">
+          <RoutePoint icon={Warehouse} label="Stratford" detail="Pick + scan" />
+          <div className="relative h-12 flex-1">
+            <svg viewBox="0 0 120 48" className="h-full w-full" aria-hidden="true">
+              <path
+                d="M6 24C36 7 71 41 114 18"
+                fill="none"
+                stroke="#D8D0C2"
+                strokeLinecap="round"
+                strokeWidth="3"
+              />
+              <path
+                className="dispatch-flow"
+                d="M6 24C36 7 71 41 114 18"
+                fill="none"
+                stroke={active ? '#B8742A' : '#1F4D3F'}
+                strokeDasharray="8 10"
+                strokeLinecap="round"
+                strokeWidth="3"
+              />
+            </svg>
+          </div>
+          <RoutePoint icon={MapPin} label="EC2A" detail={active ? 'In transit' : 'Reserved'} />
+        </div>
       </div>
     </div>
   );

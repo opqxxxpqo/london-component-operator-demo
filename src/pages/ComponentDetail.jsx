@@ -18,6 +18,7 @@ import {
   Warehouse,
 } from 'lucide-react';
 import { Navigate, useParams } from 'react-router-dom';
+import ConditionMeter from '../components/ConditionMeter.jsx';
 import ComponentIllustration from '../components/ComponentIllustration.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
 import { components } from '../data/mockData.js';
@@ -84,7 +85,10 @@ export default function ComponentDetail() {
           <div className="mt-5 grid grid-cols-3 gap-2">
             <Record label="Bay" value={component.bay} />
             <Record label="Cycles" value={component.cycles} />
-            <Record label="Condition" value={component.conditionScore} />
+            <Record label="Next service" value={component.nextService} />
+          </div>
+          <div className="mt-3">
+            <ConditionMeter value={component.conditionScore} label="Condition score" />
           </div>
         </div>
       </section>
