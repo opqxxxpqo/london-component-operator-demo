@@ -10,7 +10,18 @@ export default function ComponentIllustration({ category, className = '' }) {
       role="img"
       aria-label={`${category} component illustration`}
     >
-      <rect width="96" height="72" rx="8" fill="#E2E2D7" />
+      <defs>
+        <linearGradient id="component-stage" x1="12" y1="6" x2="84" y2="68" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#F4F1E7" />
+          <stop offset="0.58" stopColor="#DEDED3" />
+          <stop offset="1" stopColor="#C7CCC0" />
+        </linearGradient>
+        <filter id="component-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="2.2" floodColor="#101814" floodOpacity="0.2" />
+        </filter>
+      </defs>
+      <rect width="96" height="72" rx="8" fill="url(#component-stage)" />
+      <ellipse cx="48" cy="61" rx="28" ry="5" fill="#101814" opacity="0.12" />
       <path d="M8 14H88M8 36H88M8 58H88" stroke="#D1D4C8" strokeWidth="0.7" />
       <path d="M14 8V64M48 8V64M82 8V64" stroke="#D1D4C8" strokeWidth="0.7" />
       <path
@@ -22,7 +33,9 @@ export default function ComponentIllustration({ category, className = '' }) {
         strokeWidth="1"
         opacity="0.55"
       />
-      {renderShape(category)}
+      <g filter="url(#component-shadow)">
+        {renderShape(category)}
+      </g>
       <circle cx="84" cy="12" r="2" fill={transit} />
       <circle cx="12" cy="58" r="2" fill={accent} />
     </svg>
