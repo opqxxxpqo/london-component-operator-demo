@@ -64,7 +64,7 @@ export default function ComponentDetail() {
                   `${component.fullType} / ${component.dimensions} / Grade ${component.grade}`}
               </p>
             </div>
-            <div className="rounded-xl border border-[#1A3A30] bg-[#071D16] px-3 py-2 text-center">
+            <div className="rounded-xl border border-[#D3D5CA] bg-[#ECE8DD] px-3 py-2 text-center">
               <p className="text-[0.62rem] font-black uppercase text-faint">Grade</p>
               <p className="text-2xl font-black text-accent">{component.grade}</p>
             </div>
@@ -112,13 +112,13 @@ export default function ComponentDetail() {
                   Every placement, inspection and refurbishment becomes part of the object's operating record.
                 </p>
               </div>
-              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#10241C] text-accent">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#101814] text-accent">
                 <Stamp size={21} strokeWidth={2.4} />
               </div>
             </div>
           </div>
           <div className="ops-section relative space-y-4">
-            <div className="absolute left-[19px] top-4 h-[calc(100%-2rem)] w-px bg-[#1A3A30]" />
+            <div className="absolute left-[19px] top-4 h-[calc(100%-2rem)] w-px bg-[#D3D5CA]" />
             {component.timeline.map((event, index) => {
               const Icon = timelineIcons[event.icon] ?? Building2;
               return (
@@ -127,15 +127,15 @@ export default function ComponentDetail() {
                   className="timeline-reveal relative flex gap-4"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#1A3A30] bg-surface text-accent shadow-soft">
+                  <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#D3D5CA] bg-[#101814] text-accent shadow-soft">
                     <Icon size={17} strokeWidth={2.3} />
                   </div>
-                  <div className="min-w-0 flex-1 rounded-2xl border border-[#1A3A30] bg-[#071D16] p-4">
+                  <div className="min-w-0 flex-1 rounded-2xl border border-[#D3D5CA] bg-[#ECE8DD] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <p className="text-xs font-black uppercase tracking-[0.06em] text-accent">
                         {event.date}
                       </p>
-                      <span className="rotate-[-2deg] rounded border border-[#D4F45A]/50 bg-[#2D3518] px-2 py-1 text-[0.58rem] font-black uppercase tracking-[0.08em] text-transit">
+                      <span className="rotate-[-2deg] rounded border border-[#AFC926]/50 bg-[#EFF2D5] px-2 py-1 text-[0.58rem] font-black uppercase tracking-[0.08em] text-[#5F7412]">
                         {event.stamp}
                       </span>
                     </div>
@@ -173,14 +173,14 @@ export default function ComponentDetail() {
                   <XAxis type="number" hide domain={[0, 'dataMax + 80']} />
                   <YAxis type="category" dataKey="name" hide />
                   <Tooltip
-                    cursor={{ fill: '#102F35' }}
+                    cursor={{ fill: '#E1E2D8' }}
                     contentStyle={{
-                      border: '1px solid #1A3A30',
+                      border: '1px solid #D3D5CA',
                       borderRadius: 12,
-                      boxShadow: '0 18px 38px rgba(0, 0, 0, 0.28)',
+                      boxShadow: '0 18px 42px rgba(20, 28, 25, 0.12)',
                       fontSize: 12,
-                      background: '#05130F',
-                      color: '#F7FAF8',
+                      background: '#F4F0E6',
+                      color: '#101814',
                     }}
                     formatter={(value) => [`${value} kgCO\u2082e`, 'Impact']}
                   />
@@ -188,7 +188,7 @@ export default function ComponentDetail() {
                     {component.carbonComparison.map((item, index) => (
                       <Cell
                         key={item.name}
-                        fill={index === 0 ? '#1A3A30' : '#9CF22A'}
+                        fill={index === 0 ? '#D5D8CD' : '#C8DE3A'}
                       />
                     ))}
                   </Bar>
@@ -197,7 +197,7 @@ export default function ComponentDetail() {
             </div>
             <div className="mt-3 grid grid-cols-2 gap-3">
               {component.carbonComparison.map((item) => (
-                <div key={item.name} className="rounded-xl bg-[#071D16] px-3 py-3">
+                <div key={item.name} className="rounded-xl bg-[#ECE8DD] px-3 py-3">
                   <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
                     {item.name}
                   </p>
@@ -221,8 +221,8 @@ export default function ComponentDetail() {
               </div>
               <BadgeCheck size={22} className="text-accent" strokeWidth={2.4} />
             </div>
-            <div className="mt-5 overflow-hidden rounded-2xl border border-[#1A3A30] bg-[#071D16]">
-              <div className="grid grid-cols-[1fr_1.3fr_0.6fr] bg-[#10241C] px-3 py-2 text-xs font-black uppercase tracking-[0.06em] text-faint">
+            <div className="mt-5 overflow-hidden rounded-2xl border border-[#D3D5CA] bg-[#ECE8DD]">
+              <div className="grid grid-cols-[1fr_1.3fr_0.6fr] bg-[#E1E2D8] px-3 py-2 text-xs font-black uppercase tracking-[0.06em] text-faint">
                 <span>Date</span>
                 <span>Action</span>
                 <span className="text-right">Cost</span>
@@ -230,7 +230,7 @@ export default function ComponentDetail() {
               {component.maintenanceLog.map((item) => (
                 <div
                   key={`${item.date}-${item.action}`}
-                  className="grid grid-cols-[1fr_1.3fr_0.6fr] border-t border-[#10241C] px-3 py-3 text-sm"
+                  className="grid grid-cols-[1fr_1.3fr_0.6fr] border-t border-[#D3D5CA] px-3 py-3 text-sm"
                 >
                   <span className="font-black text-ink">{item.date}</span>
                   <span className="font-bold text-muted">{item.action}</span>
@@ -247,7 +247,7 @@ export default function ComponentDetail() {
 
 function FinancialMetric({ label, value, highlight = false }) {
   return (
-    <article className="rounded-2xl border border-[#1A3A30] bg-surface px-3 py-4 shadow-soft">
+    <article className="rounded-2xl border border-[#D3D5CA] bg-surface px-3 py-4 shadow-soft">
       <p className="text-[0.63rem] font-black uppercase leading-3 tracking-[0.06em] text-muted">
         {label}
       </p>
@@ -260,7 +260,7 @@ function FinancialMetric({ label, value, highlight = false }) {
 
 function Record({ label, value }) {
   return (
-    <div className="rounded-xl bg-[#071D16] px-3 py-3">
+    <div className="rounded-xl bg-[#ECE8DD] px-3 py-3">
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>

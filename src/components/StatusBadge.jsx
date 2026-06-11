@@ -1,23 +1,23 @@
 const statusStyles = {
   'In Use': {
-    dot: 'bg-accent',
-    label: 'text-accent',
-    bg: 'bg-[#162F23]',
+    dot: 'bg-[#101814]',
+    label: 'text-[#101814]',
+    bg: 'bg-accent',
   },
   'In Warehouse': {
-    dot: 'bg-[#71878C]',
-    label: 'text-[#B8C4C6]',
-    bg: 'bg-[#132B30]',
+    dot: 'bg-[#8D9389]',
+    label: 'text-[#5F665F]',
+    bg: 'bg-[#E1E2D8]',
   },
   Refurbishing: {
     dot: 'bg-transit',
-    label: 'text-transit',
-    bg: 'bg-[#2D3518]',
+    label: 'text-[#5F7412]',
+    bg: 'bg-[#EFF2D5]',
   },
   Warning: {
-    dot: 'bg-[#F08E8E]',
-    label: 'text-[#F08E8E]',
-    bg: 'bg-[#321E22]',
+    dot: 'bg-[#B65F5F]',
+    label: 'text-[#7D3F3F]',
+    bg: 'bg-[#F0DEDA]',
   },
 };
 
@@ -26,9 +26,9 @@ export default function StatusBadge({ status }) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1 text-xs font-extrabold ${style.bg} ${style.label}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-black/10 px-2.5 py-1 text-xs font-extrabold ${style.bg} ${style.label}`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${style.dot} shadow-[0_0_0_3px_rgba(255,255,255,0.08)]`} />
+      <span className={`h-1.5 w-1.5 rounded-full ${style.dot} shadow-[0_0_0_3px_rgba(255,255,255,0.45)]`} />
       {status}
     </span>
   );
