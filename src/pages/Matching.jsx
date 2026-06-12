@@ -73,7 +73,7 @@ export default function Matching() {
               {matchingProject.reference}
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#06141C] text-accent">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
             <MapPin size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -82,6 +82,8 @@ export default function Matching() {
           <ProjectFact label="Move-in" value={matchingProject.moveIn} />
           <ProjectFact label="Lease term" value={matchingProject.leaseTerm} />
           <ProjectFact label="State" value={dispatchConfirmed ? 'Dispatch live' : 'Match ready'} />
+          <ProjectFact label="Route code" value="LDN-E2A-14" />
+          <ProjectFact label="Reuse score" value="91%" />
         </div>
       </section>
 
@@ -121,7 +123,7 @@ export default function Matching() {
               2 warehouses / 6-hour longest ETA / 91% reuse fit
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#DFFF00] text-[#06141C]">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
             <Truck size={22} strokeWidth={2.4} />
           </div>
         </div>
@@ -149,7 +151,7 @@ export default function Matching() {
                   <p className="truncate text-xs font-black uppercase tracking-[0.05em] text-muted">
                     {match.route}
                   </p>
-                  <span className="rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-accent">
+                  <span className="rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-[#D8E6EA]">
                     {match.state}
                   </span>
                 </div>
@@ -190,7 +192,7 @@ export default function Matching() {
               className="timeline-reveal relative flex gap-4"
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#06141C] text-accent shadow-soft">
+              <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
                 <Clock3 size={17} strokeWidth={2.3} />
               </div>
               <div className="min-w-0 flex-1 rounded-2xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-3">
@@ -255,7 +257,7 @@ function DispatchRoute({ active }) {
       <div className="ops-section space-y-3">
         <div className="flex items-center justify-between gap-3">
           <p className="text-[0.62rem] font-black uppercase tracking-[0.07em] text-faint">
-            Routing confidence
+            LDN-E2A-14 / routing confidence
           </p>
           <span className={active ? 'eta-pill' : 'asset-chip'}>
             {active ? 'In transit' : '91% reuse fit'}
@@ -293,7 +295,7 @@ function DispatchRoute({ active }) {
 function RoutePoint({ icon: Icon, label, detail }) {
   return (
     <div className="w-20 text-center">
-      <div className="mx-auto grid h-10 w-10 place-items-center rounded-xl border border-[#0E6F97]/50 bg-[#06141C] text-accent shadow-soft">
+      <div className="mx-auto grid h-10 w-10 place-items-center rounded-xl border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
         <Icon size={18} strokeWidth={2.4} />
       </div>
       <p className="mt-2 text-xs font-black text-ink">{label}</p>

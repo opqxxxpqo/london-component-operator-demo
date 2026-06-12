@@ -48,13 +48,13 @@ export default function Components() {
           </div>
           <span className="asset-chip mb-1">
             <Barcode size={13} strokeWidth={2.4} />
-            12.8k
+            CMP-12K
           </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          <FleetStat label="In use" value="87%" />
-          <FleetStat label="Warehouse" value="1,612" />
-          <FleetStat label="Refit" value="394" />
+          <FleetStat label="CMP live" value="87%" />
+          <FleetStat label="WH stock" value="1,612" />
+          <FleetStat label="RFT bay" value="394" />
         </div>
       </section>
 
@@ -64,7 +64,7 @@ export default function Components() {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search ID, bay, tenant or status"
+            placeholder="Search CMP ID, bay, route or tenant"
             className="min-w-0 flex-1 bg-transparent text-sm font-bold text-ink outline-none placeholder:text-faint"
           />
         </label>
@@ -125,7 +125,7 @@ export default function Components() {
                   </div>
 
                   <div className="mt-4 flex items-start gap-2 text-sm font-bold text-ink">
-                    <LocateFixed className="mt-0.5 shrink-0 text-accent" size={15} strokeWidth={2.3} />
+                    <LocateFixed className="mt-0.5 shrink-0 text-[#0E6F97]" size={15} strokeWidth={2.3} />
                     <p className="min-w-0 truncate">{component.location}</p>
                   </div>
 
@@ -136,18 +136,23 @@ export default function Components() {
               </div>
 
               <div className="mt-4 grid grid-cols-4 gap-2">
-                <RecordCell label="Grade" value={component.grade} />
-                <RecordCell label="ROI" value={component.roi} accent />
+                <RecordCell label="Asset grade" value={component.grade} />
+                <RecordCell label="Reuse ROI" value={component.roi} accent />
                 <RecordCell label="Cycles" value={component.cycles} />
-                <RecordCell label="Bay" value={component.bay} wide />
+                <RecordCell label="Bay code" value={component.bay} wide />
               </div>
 
               <div className="mt-3 flex items-center justify-between rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-2">
                 <div className="flex items-center gap-2">
-                  <ClipboardCheck size={15} className="text-accent" strokeWidth={2.4} />
-                  <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
-                    Last inspection
-                  </p>
+                  <ClipboardCheck size={15} className="text-[#0E6F97]" strokeWidth={2.4} />
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
+                      Route code
+                    </p>
+                    <p className="text-[0.62rem] font-black uppercase tracking-[0.05em] text-faint">
+                      {routeCodeFor(component)}
+                    </p>
+                  </div>
                 </div>
                 <div className="text-right">
                   <p className="text-xs font-black text-ink">{component.lastInspection}</p>
@@ -162,6 +167,38 @@ export default function Components() {
       </section>
     </div>
   );
+}
+
+function routeCodeFor(component) {
+  if (component.location.includes('Canary Wharf')) {
+    return 'LDN-CW-19';
+  }
+
+  if (component.location.includes('Hackney')) {
+    return 'LDN-HWK-02';
+  }
+
+  if (component.location.includes('Stratford')) {
+    return 'LDN-STF-03';
+  }
+
+  if (component.location.includes('Old Street')) {
+    return 'LDN-OLD-03';
+  }
+
+  if (component.location.includes('Farringdon')) {
+    return 'LDN-FAR-14';
+  }
+
+  if (component.location.includes('Liverpool')) {
+    return 'LDN-LVS-06';
+  }
+
+  if (component.location.includes('Park Royal')) {
+    return 'LDN-PRK-12';
+  }
+
+  return 'LDN-CIR-04';
 }
 
 function FleetStat({ label, value }) {

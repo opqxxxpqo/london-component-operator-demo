@@ -38,6 +38,14 @@ const activityIcons = {
   move: Truck,
 };
 
+const pulseCodes = ['LDN-DSP-18', 'RDP-031H', 'WIN-007'];
+
+const controlSignals = [
+  { icon: Truck, label: 'LDN-E2A-14', value: 'Normal' },
+  { icon: Factory, label: 'STF-RFT-11', value: '11 bays' },
+  { icon: CheckCircle2, label: 'SLA-48H', value: '96%' },
+];
+
 export default function Overview() {
   const utilizationMetric = kpis.find((metric) => metric.label === 'Utilization Rate');
   const supportMetrics = kpis.filter((metric) => metric.label !== 'Utilization Rate');
@@ -68,7 +76,7 @@ export default function Overview() {
         <UtilizationHero metric={utilizationMetric} />
 
         <div className="grid grid-cols-3 gap-2">
-          {operationsPulse.map((item) => (
+          {operationsPulse.map((item, index) => (
             <div
               key={item.label}
               className="readout px-3 py-3"
@@ -78,16 +86,16 @@ export default function Overview() {
                 {item.label}
               </p>
               <p className="mt-1 truncate text-[0.58rem] font-black uppercase tracking-[0.04em] text-faint">
-                {item.detail}
+                {pulseCodes[index]}
               </p>
             </div>
           ))}
         </div>
 
         <div className="command-strip">
-          <CommandSignal icon={Truck} label="North-east corridor" value="Normal" />
-          <CommandSignal icon={Factory} label="Refit queue" value="11 bays" />
-          <CommandSignal icon={CheckCircle2} label="48h SLA" value="96%" />
+          {controlSignals.map((signal) => (
+            <CommandSignal key={signal.label} {...signal} />
+          ))}
         </div>
       </section>
 
@@ -110,7 +118,7 @@ export default function Overview() {
               8 buildings / 3 warehouses / 18 dispatch lanes
             </p>
           </div>
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#06141C] text-accent">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
             <MapPinned size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -140,7 +148,7 @@ export default function Overview() {
                 key={`${activity.text}-${activity.time}`}
                 className="relative flex gap-3 py-3.5 first:pt-0 last:pb-0"
               >
-                <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#0E6F97]/45 bg-[#092633] text-accent">
+                <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#0E6F97]/45 bg-[#083F5A] text-[#D8E6EA]">
                   <Icon size={16} strokeWidth={2.35} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -222,31 +230,37 @@ function UtilizationHero({ metric }) {
       <div className="ops-section space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">Fleet priority</p>
+            <p className="ops-kicker">LCO-UTIL-873</p>
             <h2 className="mt-1 text-xl font-black tracking-normal">
               Utilization
             </h2>
           </div>
           <span className="eta-pill bg-[#0E6F97]/30">
-            {metric.trend}
+            RUN 48H
           </span>
         </div>
         <div className="relative overflow-hidden rounded-2xl bg-accent px-4 py-5 text-[#06141C]">
-          <div className="absolute right-0 top-0 h-full w-16 bg-[#06141C]" />
-          <div className="absolute right-3 top-0 h-full w-8 bg-[#F7FFFF]" />
+          <div className="absolute right-0 top-0 h-full w-20 bg-[#06141C]" />
+          <div className="absolute right-4 top-0 h-full w-8 bg-[#F7FFFF]" />
+          <div className="absolute bottom-0 right-0 h-8 w-20 bg-[#0E6F97]" />
           <div className="relative">
             <p className="text-[0.64rem] font-black uppercase tracking-[0.12em]">
               City fleet load
             </p>
             <div className="mt-3 flex items-end gap-1">
-              <span className="text-[5.5rem] font-black leading-[0.76] tracking-normal">
+              <span className="text-[6.2rem] font-black leading-[0.72] tracking-normal">
                 {whole}
               </span>
-              <span className="pb-1 text-[2.2rem] font-black leading-none">
+              <span className="pb-2 text-[1.65rem] font-black leading-none">
                 {decimal}
               </span>
             </div>
           </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          <IdentityCell label="Route" value="LDN-CIR-04" />
+          <IdentityCell label="Reuse" value="91%" />
+          <IdentityCell label="Grade" value="A-" />
         </div>
         <p className="text-sm font-bold leading-5 text-muted">
           {metric.signal} across active leases, warehouse stock and scheduled redeployments.
@@ -262,14 +276,14 @@ function RaceStat({ metric, featured }) {
   return (
     <article
       className={[
-        'min-h-[132px] rounded-2xl border px-3 py-3 shadow-soft',
+        'min-h-[132px] rounded-lg border px-3 py-3 shadow-soft',
         featured
           ? 'border-[#DFFF00] bg-accent text-[#06141C]'
           : 'border-[#0E6F97]/45 bg-[#081820] text-ink',
       ].join(' ')}
     >
       <p className={featured ? 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em]' : 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em] text-faint'}>
-        {metric.label}
+        {statCodeFor(metric.label)}
       </p>
       <div className="mt-4">
         <p className="text-[2rem] font-black leading-[0.82] tracking-normal">
@@ -288,6 +302,17 @@ function RaceStat({ metric, featured }) {
   );
 }
 
+function IdentityCell({ label, value }) {
+  return (
+    <div className="border border-[#0E6F97]/45 bg-[#083F5A] px-2.5 py-2">
+      <p className="text-[0.56rem] font-black uppercase tracking-[0.08em] text-[#D8E6EA]">
+        {label}
+      </p>
+      <p className="mt-1 whitespace-nowrap text-[0.72rem] font-black leading-none text-ink">{value}</p>
+    </div>
+  );
+}
+
 function splitUtilization(value) {
   const match = value.match(/^(\d+)(.*)$/);
   return match ? [match[1], match[2]] : [value, ''];
@@ -298,7 +323,7 @@ function splitStatValue(value) {
     return ['12', '847'];
   }
 
-  if (value.startsWith('£')) {
+  if (value.startsWith('\u00a3')) {
     return ['£284', 'k'];
   }
 
@@ -309,10 +334,26 @@ function splitStatValue(value) {
   return [value, ''];
 }
 
+function statCodeFor(label) {
+  if (label === 'Active Components') {
+    return 'CMP-FLT-12847';
+  }
+
+  if (label === 'Monthly Recurring Revenue') {
+    return 'YLD-MRR-284K';
+  }
+
+  if (label.includes('CO')) {
+    return 'CARB-142T';
+  }
+
+  return label;
+}
+
 function CommandSignal({ icon: Icon, label, value }) {
   return (
     <div className="min-w-0 flex items-center gap-2">
-      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#06141C] text-accent">
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#083F5A] text-[#D8E6EA]">
         <Icon size={14} strokeWidth={2.4} />
       </div>
       <div className="min-w-0">

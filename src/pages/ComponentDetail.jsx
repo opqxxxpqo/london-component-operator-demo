@@ -112,7 +112,7 @@ export default function ComponentDetail() {
                   Every placement, inspection and refurbishment becomes part of the object's operating record.
                 </p>
               </div>
-              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#06141C] text-accent">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
                 <Stamp size={21} strokeWidth={2.4} />
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function ComponentDetail() {
                   className="timeline-reveal relative flex gap-4"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#06141C] text-accent shadow-soft">
+                  <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
                     <Icon size={17} strokeWidth={2.3} />
                   </div>
                   <div className="min-w-0 flex-1 rounded-2xl border border-[#0E6F97]/45 bg-[#092633] p-4">
