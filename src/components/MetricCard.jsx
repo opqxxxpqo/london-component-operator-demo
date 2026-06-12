@@ -17,7 +17,7 @@ export default function MetricCard({ label, value, trend, signal }) {
           <p className="min-h-9 text-xs font-extrabold uppercase leading-4 tracking-[0.06em] text-muted">
             {label}
           </p>
-          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(232,255,0,0.18)]" />
+          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(103,240,77,0.2)]" />
         </div>
         <p className={`metric-rise mt-4 whitespace-nowrap ${valueSizeClass} font-black leading-[0.92] tracking-normal text-ink`}>
           {hasUnit ? (
@@ -33,7 +33,7 @@ export default function MetricCard({ label, value, trend, signal }) {
           )}
         </p>
         <div className="mt-4 space-y-2">
-          <p className="inline-flex rounded-full border border-[#D6EE00] bg-accent px-2.5 py-1 text-[0.68rem] font-black leading-none text-ink shadow-[0_8px_18px_rgba(232,255,0,0.2)]">
+          <p className="inline-flex rounded-full border border-[#4ED93B] bg-accent px-2.5 py-1 text-[0.68rem] font-black leading-none text-ink shadow-[0_8px_18px_rgba(103,240,77,0.24)]">
             {trend}
           </p>
           {signal && (

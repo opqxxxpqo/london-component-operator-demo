@@ -1,18 +1,18 @@
 const statusStyles = {
   'In Use': {
-    dot: 'bg-[#06111A]',
-    label: 'text-[#06111A]',
+    dot: 'bg-[#05080C]',
+    label: 'text-[#05080C]',
     bg: 'bg-accent',
   },
   'In Warehouse': {
-    dot: 'bg-[#81949E]',
-    label: 'text-[#52636B]',
-    bg: 'bg-[#CBDDE2]',
+    dot: 'bg-[#6E8895]',
+    label: 'text-[#334B57]',
+    bg: 'bg-[#B5D7E6]',
   },
   Refurbishing: {
     dot: 'bg-transit',
-    label: 'text-[#006E95]',
-    bg: 'bg-[#ECF4A8]',
+    label: 'text-[#0B6F4C]',
+    bg: 'bg-[#CFFFAE]',
   },
   Warning: {
     dot: 'bg-[#B65F5F]',
