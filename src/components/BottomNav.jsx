@@ -18,7 +18,7 @@ export default function BottomNav() {
             className={({ isActive }) =>
               [
                 'flex flex-col items-center justify-center gap-1 rounded-lg px-2 py-2 text-xs font-semibold transition-colors',
-                isActive ? 'bg-[#06141C] text-accent' : 'text-faint',
+                isActive ? 'active-tab' : 'text-faint',
               ].join(' ')
             }
           >

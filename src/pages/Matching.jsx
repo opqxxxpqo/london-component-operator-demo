@@ -54,7 +54,7 @@ export default function Matching() {
               Matching
             </h1>
           </div>
-          <span className="asset-chip mt-1">
+          <span className="asset-chip livery-chip mt-1">
             <Radar size={12} strokeWidth={2.5} />
             Active
           </span>
@@ -251,7 +251,7 @@ export default function Matching() {
 
 function DispatchRoute({ active }) {
   return (
-    <div className="ops-card rounded-2xl p-4">
+    <div className="ops-card livery-panel rounded-2xl p-4">
       <div className="ops-section space-y-3">
         <div className="flex items-center justify-between gap-3">
           <p className="text-[0.62rem] font-black uppercase tracking-[0.07em] text-faint">

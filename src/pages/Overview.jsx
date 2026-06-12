@@ -20,7 +20,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import MetricCard from '../components/MetricCard.jsx';
 import {
   activities,
   kpis,
@@ -40,6 +39,8 @@ const activityIcons = {
 };
 
 export default function Overview() {
+  const utilizationMetric = kpis.find((metric) => metric.label === 'Utilization Rate');
+  const supportMetrics = kpis.filter((metric) => metric.label !== 'Utilization Rate');
   const dateLabel = new Intl.DateTimeFormat('en-GB', {
     weekday: 'long',
     day: 'numeric',
@@ -58,11 +59,13 @@ export default function Overview() {
             </h1>
             <p className="mt-3 text-sm font-bold text-muted">{dateLabel}</p>
           </div>
-          <span className="asset-chip mt-1">
+          <span className="asset-chip livery-chip mt-1">
             <RadioTower size={12} strokeWidth={2.4} />
             Live
           </span>
         </div>
+
+        <UtilizationHero metric={utilizationMetric} />
 
         <div className="grid grid-cols-3 gap-2">
           {operationsPulse.map((item) => (
@@ -88,10 +91,12 @@ export default function Overview() {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-3.5">
-        {kpis.map((metric) => (
-          <MetricCard key={metric.label} {...metric} />
-        ))}
+      <section className="space-y-3.5">
+        <div className="grid grid-cols-3 gap-2.5">
+          {supportMetrics.map((metric, index) => (
+            <RaceStat key={metric.label} metric={metric} featured={index === 0} />
+          ))}
+        </div>
       </section>
 
       <section className="ops-card rounded-2xl p-5">
@@ -207,6 +212,101 @@ export default function Overview() {
       </section>
     </div>
   );
+}
+
+function UtilizationHero({ metric }) {
+  const [whole, decimal] = splitUtilization(metric.value);
+
+  return (
+    <article className="ops-card rounded-2xl p-4">
+      <div className="ops-section space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="ops-kicker">Fleet priority</p>
+            <h2 className="mt-1 text-xl font-black tracking-normal">
+              Utilization
+            </h2>
+          </div>
+          <span className="eta-pill bg-[#0E6F97]/30">
+            {metric.trend}
+          </span>
+        </div>
+        <div className="relative overflow-hidden rounded-2xl bg-accent px-4 py-5 text-[#06141C]">
+          <div className="absolute right-0 top-0 h-full w-16 bg-[#06141C]" />
+          <div className="absolute right-3 top-0 h-full w-8 bg-[#F7FFFF]" />
+          <div className="relative">
+            <p className="text-[0.64rem] font-black uppercase tracking-[0.12em]">
+              City fleet load
+            </p>
+            <div className="mt-3 flex items-end gap-1">
+              <span className="text-[5.5rem] font-black leading-[0.76] tracking-normal">
+                {whole}
+              </span>
+              <span className="pb-1 text-[2.2rem] font-black leading-none">
+                {decimal}
+              </span>
+            </div>
+          </div>
+        </div>
+        <p className="text-sm font-bold leading-5 text-muted">
+          {metric.signal} across active leases, warehouse stock and scheduled redeployments.
+        </p>
+      </div>
+    </article>
+  );
+}
+
+function RaceStat({ metric, featured }) {
+  const [primary, secondary] = splitStatValue(metric.value);
+
+  return (
+    <article
+      className={[
+        'min-h-[132px] rounded-2xl border px-3 py-3 shadow-soft',
+        featured
+          ? 'border-[#DFFF00] bg-accent text-[#06141C]'
+          : 'border-[#0E6F97]/45 bg-[#081820] text-ink',
+      ].join(' ')}
+    >
+      <p className={featured ? 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em]' : 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em] text-faint'}>
+        {metric.label}
+      </p>
+      <div className="mt-4">
+        <p className="text-[2rem] font-black leading-[0.82] tracking-normal">
+          {primary}
+        </p>
+        {secondary && (
+          <p className="mt-1 text-lg font-black leading-none">
+            {secondary}
+          </p>
+        )}
+      </div>
+      <p className={featured ? 'mt-3 text-[0.62rem] font-black uppercase tracking-[0.05em]' : 'mt-3 text-[0.62rem] font-black uppercase tracking-[0.05em] text-muted'}>
+        {metric.trend}
+      </p>
+    </article>
+  );
+}
+
+function splitUtilization(value) {
+  const match = value.match(/^(\d+)(.*)$/);
+  return match ? [match[1], match[2]] : [value, ''];
+}
+
+function splitStatValue(value) {
+  if (value === '12,847') {
+    return ['12', '847'];
+  }
+
+  if (value.startsWith('£')) {
+    return ['£284', 'k'];
+  }
+
+  if (value.includes('tonnes')) {
+    return ['142', 't'];
+  }
+
+  return [value, ''];
 }
 
 function CommandSignal({ icon: Icon, label, value }) {
