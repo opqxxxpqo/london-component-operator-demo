@@ -41,30 +41,30 @@ export default function Components() {
       <section className="space-y-4">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="ops-kicker">Fleet register</p>
+            <p className="ops-kicker">Seed-bank register</p>
             <h1 className="mt-2 text-[2.35rem] font-black leading-none tracking-normal">
               Components
             </h1>
           </div>
           <span className="asset-chip mb-1">
             <Barcode size={13} strokeWidth={2.4} />
-            CMP-12K
+            SEED-12K
           </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          <FleetStat label="CMP live" value="87%" />
-          <FleetStat label="WH stock" value="1,612" />
-          <FleetStat label="RFT bay" value="394" />
+          <FleetStat label="Live canopy" value="87%" />
+          <FleetStat label="Seed bank" value="1,612" />
+          <FleetStat label="Refit nest" value="394" />
         </div>
       </section>
 
-      <section className="sticky top-[73px] z-20 -mx-5 space-y-3 border-y border-[#0E6F97]/50 bg-canvas px-5 py-3">
-        <label className="flex h-12 items-center gap-3 rounded-xl border border-[#0E6F97]/45 bg-surface px-4 shadow-soft">
+      <section className="sticky top-[73px] z-20 -mx-5 space-y-3 border-y border-[#1E6A45]/45 bg-canvas/95 px-5 py-3 backdrop-blur-md">
+        <label className="flex h-12 items-center gap-3 rounded-full border border-[#1E6A45]/45 bg-surface px-4 shadow-soft">
           <Search size={18} className="shrink-0 text-faint" strokeWidth={2.2} />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search CMP ID, bay, route or tenant"
+            placeholder="Search asset, nest, migration or tenant"
             className="min-w-0 flex-1 bg-transparent text-sm font-bold text-ink outline-none placeholder:text-faint"
           />
         </label>
@@ -79,8 +79,8 @@ export default function Components() {
                 className={[
                   'shrink-0 rounded-full border px-4 py-2 text-sm font-extrabold transition-colors',
                   isActive
-                    ? 'border-accent bg-accent text-[#06141C] shadow-soft'
-                    : 'border-[#0E6F97]/45 bg-surface text-muted',
+                    ? 'border-accent bg-accent text-[#071B17] shadow-soft'
+                    : 'border-[#1E6A45]/45 bg-surface text-muted',
                 ].join(' ')}
               >
                 {filter}
@@ -125,7 +125,7 @@ export default function Components() {
                   </div>
 
                   <div className="mt-4 flex items-start gap-2 text-sm font-bold text-ink">
-                    <LocateFixed className="mt-0.5 shrink-0 text-[#0E6F97]" size={15} strokeWidth={2.3} />
+                    <LocateFixed className="mt-0.5 shrink-0 text-[#49B26B]" size={15} strokeWidth={2.3} />
                     <p className="min-w-0 truncate">{component.location}</p>
                   </div>
 
@@ -142,12 +142,12 @@ export default function Components() {
                 <RecordCell label="Bay code" value={component.bay} wide />
               </div>
 
-              <div className="mt-3 flex items-center justify-between rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-2">
+              <div className="mt-3 flex items-center justify-between rounded-xl border border-[#1E6A45]/45 bg-[#0E342B] px-3 py-2">
                 <div className="flex items-center gap-2">
-                  <ClipboardCheck size={15} className="text-[#0E6F97]" strokeWidth={2.4} />
+                  <ClipboardCheck size={15} className="text-[#49B26B]" strokeWidth={2.4} />
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
-                      Route code
+                      Migration path
                     </p>
                     <p className="text-[0.62rem] font-black uppercase tracking-[0.05em] text-faint">
                       {routeCodeFor(component)}
@@ -203,7 +203,7 @@ function routeCodeFor(component) {
 
 function FleetStat({ label, value }) {
   return (
-    <div className="rounded-xl border border-[#0E6F97]/45 bg-surface px-3 py-3 shadow-soft">
+    <div className="rounded-xl border border-[#1E6A45]/45 bg-surface px-3 py-3 shadow-soft">
       <p className="text-lg font-black leading-none text-ink">{value}</p>
       <p className="mt-2 text-[0.64rem] font-black uppercase tracking-[0.06em] text-muted">
         {label}
@@ -214,7 +214,7 @@ function FleetStat({ label, value }) {
 
 function RecordCell({ label, value, accent = false, wide = false }) {
   return (
-    <div className={`${wide ? 'col-span-2' : ''} rounded-xl bg-[#092633] px-2.5 py-2`}>
+    <div className={`${wide ? 'col-span-2' : ''} rounded-xl bg-[#0E342B] px-2.5 py-2`}>
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>

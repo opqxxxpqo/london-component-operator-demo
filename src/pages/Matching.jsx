@@ -41,7 +41,7 @@ export default function Matching() {
 
   function confirmDispatch() {
     setDispatchConfirmed(true);
-    setToastMessage('Dispatch confirmed');
+    setToastMessage('Migration confirmed');
   }
 
   return (
@@ -49,14 +49,14 @@ export default function Matching() {
       <section className="space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">48-hour deployment engine</p>
+            <p className="ops-kicker">48-hour migration engine</p>
             <h1 className="mt-2 text-[2.35rem] font-black leading-none tracking-normal">
               Matching
             </h1>
           </div>
-          <span className="asset-chip livery-chip mt-1">
+          <span className="asset-chip living-chip mt-1">
             <Radar size={12} strokeWidth={2.5} />
-            Active
+            Alive
           </span>
         </div>
         <DispatchRoute active={dispatchConfirmed} />
@@ -73,7 +73,7 @@ export default function Matching() {
               {matchingProject.reference}
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
+          <div className="toe-pad grid h-11 w-11 shrink-0 place-items-center text-ink">
             <MapPin size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function Matching() {
           <ProjectFact label="Location" value={matchingProject.location} />
           <ProjectFact label="Move-in" value={matchingProject.moveIn} />
           <ProjectFact label="Lease term" value={matchingProject.leaseTerm} />
-          <ProjectFact label="State" value={dispatchConfirmed ? 'Dispatch live' : 'Match ready'} />
+          <ProjectFact label="State" value={dispatchConfirmed ? 'Migration live' : 'Match ready'} />
           <ProjectFact label="Route code" value="LDN-E2A-14" />
           <ProjectFact label="Reuse score" value="91%" />
         </div>
@@ -90,7 +90,7 @@ export default function Matching() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section flex items-center justify-between">
           <div>
-            <p className="ops-kicker">Requirement manifest</p>
+            <p className="ops-kicker">Habitat manifest</p>
             <h2 className="mt-1 text-2xl font-black tracking-normal">
               Requirements
             </h2>
@@ -101,7 +101,7 @@ export default function Matching() {
           {requirements.map((requirement, index) => (
             <div
               key={requirement}
-              className="rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-3"
+              className="rounded-xl border border-[#1E6A45]/45 bg-[#0E342B] px-3 py-3"
             >
               <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
                 Line {String(index + 1).padStart(2, '0')}
@@ -115,20 +115,20 @@ export default function Matching() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">Warehouse routing logic</p>
+            <p className="ops-kicker">Seed-bank routing logic</p>
             <h2 className="mt-1 text-2xl font-black tracking-normal">
               Matched 47 components
             </h2>
             <p className="mt-1 text-sm font-bold text-muted">
-              2 warehouses / 6-hour longest ETA / 91% reuse fit
+              2 seed banks / 6-hour longest ETA / 91% reuse fit
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
+          <div className="toe-pad grid h-11 w-11 shrink-0 place-items-center text-ink">
             <Truck size={22} strokeWidth={2.4} />
           </div>
         </div>
 
-        <div className="ops-section mt-5 divide-y divide-[#0E6F97]/35">
+        <div className="ops-section mt-5 divide-y divide-[#1E6A45]/35">
           {visibleMatches.map((match) => (
             <div key={match.id} className="py-3.5 first:pt-0 last:pb-0">
               <div className="flex items-start justify-between gap-3">
@@ -151,7 +151,7 @@ export default function Matching() {
                   <p className="truncate text-xs font-black uppercase tracking-[0.05em] text-muted">
                     {match.route}
                   </p>
-                  <span className="rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-[#D8E6EA]">
+                  <span className="rounded-full bg-[#0E342B] px-2 py-1 text-[0.62rem] font-black text-[#DDE8E3]">
                     {match.state}
                   </span>
                 </div>
@@ -163,7 +163,7 @@ export default function Matching() {
         <button
           type="button"
           onClick={() => setShowAll((current) => !current)}
-          className="ops-section mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#0E6F97]/45 bg-surface px-4 py-3 text-sm font-black text-accent"
+          className="ops-section mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-[#1E6A45]/45 bg-surface px-4 py-3 text-sm font-black text-accent"
         >
           {showAll ? (
             <>
@@ -179,23 +179,23 @@ export default function Matching() {
 
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section">
-          <p className="ops-kicker">Install runbook</p>
+            <p className="ops-kicker">Canopy runbook</p>
           <h2 className="mt-1 text-2xl font-black tracking-normal">
             Installation schedule
           </h2>
         </div>
         <div className="ops-section relative mt-5 space-y-4">
-          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-px bg-[#0E6F97]" />
+          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-px bg-[#49B26B]" />
           {installationSchedule.map((item, index) => (
             <div
               key={`${item.day}-${item.time}`}
               className="timeline-reveal relative flex gap-4"
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
+              <div className="toe-pad z-10 grid h-10 w-10 shrink-0 place-items-center border text-ink shadow-soft">
                 <Clock3 size={17} strokeWidth={2.3} />
               </div>
-              <div className="min-w-0 flex-1 rounded-2xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-3">
+              <div className="min-w-0 flex-1 rounded-2xl border border-[#1E6A45]/45 bg-[#0E342B] px-3 py-3">
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-xs font-black uppercase tracking-[0.06em] text-accent">
                     {item.day}
@@ -206,7 +206,7 @@ export default function Matching() {
                 <p className="mt-1 text-sm font-semibold leading-5 text-muted">
                   {item.detail}
                 </p>
-                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#0B2E3A]">
+                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#071B17]">
                   <div
                     className={`h-full rounded-full ${dispatchConfirmed ? 'bg-transit' : 'bg-accent'}`}
                     style={{ width: `${dispatchConfirmed ? item.progress : Math.max(12, item.progress - 24)}%` }}
@@ -220,11 +220,11 @@ export default function Matching() {
 
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section">
-          <p className="ops-kicker">Commercial routing</p>
+            <p className="ops-kicker">Yield summary</p>
           <h2 className="mt-1 text-2xl font-black tracking-normal">
             Financial summary
           </h2>
-          <div className="mt-5 divide-y divide-[#0E6F97]/35">
+          <div className="mt-5 divide-y divide-[#1E6A45]/35">
             {matchingFinancials.map((item) => (
               <div key={item.label} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
                 <p className="text-sm font-black text-muted">{item.label}</p>
@@ -238,12 +238,12 @@ export default function Matching() {
       <button
         type="button"
         onClick={confirmDispatch}
-        className={`mb-2 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 text-base font-black text-[#06141C] shadow-lift transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:scale-[0.99] ${
+        className={`mb-2 flex h-14 w-full items-center justify-center gap-2 rounded-full px-5 text-base font-black text-[#071B17] shadow-lift transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:scale-[0.99] ${
           dispatchConfirmed ? 'bg-transit' : 'bg-accent'
         }`}
       >
         <CheckCircle2 size={20} strokeWidth={2.4} />
-        {dispatchConfirmed ? 'Dispatch Live' : 'Confirm Dispatch'}
+        {dispatchConfirmed ? 'Migration Live' : 'Confirm Migration'}
       </button>
 
       <Toast message={toastMessage} />
@@ -253,14 +253,14 @@ export default function Matching() {
 
 function DispatchRoute({ active }) {
   return (
-    <div className="ops-card livery-panel rounded-2xl p-4">
+    <div className="ops-card living-panel rounded-2xl p-4">
       <div className="ops-section space-y-3">
         <div className="flex items-center justify-between gap-3">
           <p className="text-[0.62rem] font-black uppercase tracking-[0.07em] text-faint">
-            LDN-E2A-14 / routing confidence
+            LDN-E2A-14 / migration confidence
           </p>
           <span className={active ? 'eta-pill' : 'asset-chip'}>
-            {active ? 'In transit' : '91% reuse fit'}
+            {active ? 'Migrating' : '91% reuse fit'}
           </span>
         </div>
         <div className="flex items-center justify-between gap-3">
@@ -270,22 +270,22 @@ function DispatchRoute({ active }) {
               <path
                 d="M6 24C36 7 71 41 114 18"
                 fill="none"
-                stroke="#0E6F97"
+                stroke="#49B26B"
                 strokeLinecap="round"
                 strokeWidth="3"
               />
               <path
-                className="dispatch-flow"
+                className="migration-flow"
                 d="M6 24C36 7 71 41 114 18"
                 fill="none"
-                stroke={active ? '#DFFF00' : '#0E6F97'}
+                stroke={active ? '#C7F000' : '#49B26B'}
                 strokeDasharray="8 10"
                 strokeLinecap="round"
                 strokeWidth="3"
               />
             </svg>
           </div>
-          <RoutePoint icon={MapPin} label="EC2A" detail={active ? 'In transit' : 'Reserved'} />
+          <RoutePoint icon={MapPin} label="EC2A" detail={active ? 'Migrating' : 'Reserved'} />
         </div>
       </div>
     </div>
@@ -295,7 +295,7 @@ function DispatchRoute({ active }) {
 function RoutePoint({ icon: Icon, label, detail }) {
   return (
     <div className="w-20 text-center">
-      <div className="mx-auto grid h-10 w-10 place-items-center rounded-xl border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
+      <div className="toe-pad mx-auto grid h-10 w-10 place-items-center border text-ink shadow-soft">
         <Icon size={18} strokeWidth={2.4} />
       </div>
       <p className="mt-2 text-xs font-black text-ink">{label}</p>
@@ -310,7 +310,7 @@ function RouteLine() {
   return (
     <div className="flex shrink-0 items-center gap-1">
       <span className="h-2 w-2 rounded-full bg-accent" />
-      <span className="h-px w-8 bg-[#0E6F97]" />
+      <span className="h-px w-8 bg-[#49B26B]" />
       <span className="h-2 w-2 rounded-full bg-transit" />
     </div>
   );
@@ -318,7 +318,7 @@ function RouteLine() {
 
 function ProjectFact({ label, value }) {
   return (
-    <div className="rounded-xl bg-[#092633] px-3 py-3">
+    <div className="rounded-xl bg-[#0E342B] px-3 py-3">
       <p className="text-[0.64rem] font-black uppercase tracking-[0.06em] text-faint">{label}</p>
       <p className="mt-1 text-sm font-black leading-5 text-ink">{value}</p>
     </div>

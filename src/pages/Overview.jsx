@@ -38,11 +38,11 @@ const activityIcons = {
   move: Truck,
 };
 
-const pulseCodes = ['LDN-DSP-18', 'RDP-031H', 'WIN-007'];
+const pulseCodes = ['CANOPY-18', 'MIG-031H', 'NEST-007'];
 
 const controlSignals = [
-  { icon: Truck, label: 'LDN-E2A-14', value: 'Normal' },
-  { icon: Factory, label: 'STF-RFT-11', value: '11 bays' },
+  { icon: Truck, label: 'E2A-MIG-14', value: 'Stable' },
+  { icon: Factory, label: 'STF-SEED-11', value: '11 nests' },
   { icon: CheckCircle2, label: 'SLA-48H', value: '96%' },
 ];
 
@@ -61,15 +61,15 @@ export default function Overview() {
       <section className="space-y-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">London operations grid</p>
+            <p className="ops-kicker">Living circulation canopy</p>
             <h1 className="mt-2 text-[2.35rem] font-black leading-[0.98] tracking-normal text-ink">
               Good morning, Sarah
             </h1>
             <p className="mt-3 text-sm font-bold text-muted">{dateLabel}</p>
           </div>
-          <span className="asset-chip livery-chip mt-1">
+          <span className="asset-chip living-chip mt-1">
             <RadioTower size={12} strokeWidth={2.4} />
-            Live
+            Breathing
           </span>
         </div>
 
@@ -102,7 +102,7 @@ export default function Overview() {
       <section className="space-y-3.5">
         <div className="grid grid-cols-3 gap-2.5">
           {supportMetrics.map((metric, index) => (
-            <RaceStat key={metric.label} metric={metric} featured={index === 0} />
+            <CanopyStat key={metric.label} metric={metric} featured={index === 0} />
           ))}
         </div>
       </section>
@@ -110,15 +110,15 @@ export default function Overview() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section mb-5 flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">Circulation network</p>
+            <p className="ops-kicker">Urban canopy map</p>
             <h2 className="mt-1 text-2xl font-black tracking-normal">
               London network
             </h2>
             <p className="mt-1 text-sm font-bold text-muted">
-              8 buildings / 3 warehouses / 18 dispatch lanes
+              8 host sites / 3 seed banks / 18 migration paths
             </p>
           </div>
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
+          <div className="toe-pad grid h-10 w-10 shrink-0 place-items-center text-ink">
             <MapPinned size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -133,14 +133,14 @@ export default function Overview() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section flex items-center justify-between gap-4">
           <div>
-            <p className="ops-kicker">Event stream</p>
+            <p className="ops-kicker">Lifecycle stream</p>
             <h2 className="mt-1 text-2xl font-black tracking-normal">
               Recent activity
             </h2>
           </div>
           <Gauge className="text-accent" size={22} strokeWidth={2.3} />
         </div>
-        <div className="ops-section mt-5 divide-y divide-[#0E6F97]/35">
+        <div className="ops-section mt-5 divide-y divide-[#1E6A45]/35">
           {activities.map((activity) => {
             const Icon = activityIcons[activity.type] ?? RefreshCcw;
             return (
@@ -148,7 +148,7 @@ export default function Overview() {
                 key={`${activity.text}-${activity.time}`}
                 className="relative flex gap-3 py-3.5 first:pt-0 last:pb-0"
               >
-                <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#0E6F97]/45 bg-[#083F5A] text-[#D8E6EA]">
+                <div className="toe-pad mt-0.5 grid h-9 w-9 shrink-0 place-items-center border text-ink">
                   <Icon size={16} strokeWidth={2.35} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -156,7 +156,7 @@ export default function Overview() {
                     <p className="text-sm font-extrabold leading-5 text-ink">
                       {activity.text}
                     </p>
-                    <span className="shrink-0 rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-muted">
+                    <span className="shrink-0 rounded-full bg-[#0E342B] px-2 py-1 text-[0.62rem] font-black text-muted">
                       {activity.lane}
                     </span>
                   </div>
@@ -173,7 +173,7 @@ export default function Overview() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section mb-5 flex items-center justify-between">
           <div>
-            <p className="ops-kicker">Asset yield</p>
+            <p className="ops-kicker">Nutrient yield</p>
             <h2 className="mt-1 text-2xl font-black tracking-normal">
               Revenue trend
             </h2>
@@ -186,33 +186,33 @@ export default function Overview() {
         <div className="ops-section h-56">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={revenueTrend} margin={{ top: 12, right: 8, left: 0, bottom: 4 }}>
-              <CartesianGrid stroke="rgba(216, 230, 234, 0.14)" vertical={false} />
+              <CartesianGrid stroke="rgba(73, 178, 107, 0.18)" vertical={false} />
               <XAxis
                 dataKey="month"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#8EA4AE', fontSize: 12, fontWeight: 700 }}
+                tick={{ fill: '#9DB6AB', fontSize: 12, fontWeight: 700 }}
               />
               <YAxis hide domain={['dataMin - 8000', 'dataMax + 8000']} />
               <Tooltip
-                cursor={{ stroke: 'rgba(223, 255, 0, 0.28)', strokeWidth: 1 }}
+                cursor={{ stroke: 'rgba(199, 240, 0, 0.3)', strokeWidth: 1 }}
                 contentStyle={{
-                  border: '1px solid rgba(223, 255, 0, 0.22)',
-                  borderRadius: 12,
-                  boxShadow: '0 18px 42px rgba(6, 17, 26, 0.14)',
+                  border: '1px solid rgba(199, 240, 0, 0.2)',
+                  borderRadius: 18,
+                  boxShadow: '0 18px 42px rgba(0, 0, 0, 0.28)',
                   fontSize: 12,
-                  background: '#081820',
-                  color: '#F7FFFF',
+                  background: '#0A231B',
+                  color: '#DDE8E3',
                 }}
                 formatter={(value) => [`\u00a3${value.toLocaleString()}`, 'MRR']}
               />
               <Line
                 type="monotone"
                 dataKey="mrr"
-                stroke="#DFFF00"
+                stroke="#C7F000"
                 strokeWidth={3}
-                dot={{ r: 3.5, fill: '#DFFF00', stroke: '#06141C', strokeWidth: 2 }}
-                activeDot={{ r: 5, fill: '#DFFF00', stroke: '#F7FFFF', strokeWidth: 2 }}
+                dot={{ r: 3.5, fill: '#C7F000', stroke: '#071B17', strokeWidth: 2 }}
+                activeDot={{ r: 5, fill: '#C7F000', stroke: '#DDE8E3', strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -230,22 +230,19 @@ function UtilizationHero({ metric }) {
       <div className="ops-section space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="ops-kicker">LCO-UTIL-873</p>
+            <p className="ops-kicker">LCO-BREATH-873</p>
             <h2 className="mt-1 text-xl font-black tracking-normal">
               Utilization
             </h2>
           </div>
-          <span className="eta-pill bg-[#0E6F97]/30">
-            RUN 48H
+          <span className="eta-pill bg-[#1E6A45]/30">
+            48H cycle
           </span>
         </div>
-        <div className="relative overflow-hidden rounded-2xl bg-accent px-4 py-5 text-[#06141C]">
-          <div className="absolute right-0 top-0 h-full w-20 bg-[#06141C]" />
-          <div className="absolute right-4 top-0 h-full w-8 bg-[#F7FFFF]" />
-          <div className="absolute bottom-0 right-0 h-8 w-20 bg-[#0E6F97]" />
+        <div className="frog-hero relative overflow-hidden px-4 py-5">
           <div className="relative">
             <p className="text-[0.64rem] font-black uppercase tracking-[0.12em]">
-              City fleet load
+              City circulation vitality
             </p>
             <div className="mt-3 flex items-end gap-1">
               <span className="text-[6.2rem] font-black leading-[0.72] tracking-normal">
@@ -263,14 +260,14 @@ function UtilizationHero({ metric }) {
           <IdentityCell label="Grade" value="A-" />
         </div>
         <p className="text-sm font-bold leading-5 text-muted">
-          {metric.signal} across active leases, warehouse stock and scheduled redeployments.
+          {metric.signal} across active leases, seed-bank stock and scheduled migrations.
         </p>
       </div>
     </article>
   );
 }
 
-function RaceStat({ metric, featured }) {
+function CanopyStat({ metric, featured }) {
   const [primary, secondary] = splitStatValue(metric.value);
 
   return (
@@ -278,8 +275,8 @@ function RaceStat({ metric, featured }) {
       className={[
         'min-h-[132px] rounded-lg border px-3 py-3 shadow-soft',
         featured
-          ? 'border-[#DFFF00] bg-accent text-[#06141C]'
-          : 'border-[#0E6F97]/45 bg-[#081820] text-ink',
+          ? 'border-[#C7F000] bg-accent text-[#071B17]'
+          : 'border-[#1E6A45]/45 bg-[#0A231B] text-ink',
       ].join(' ')}
     >
       <p className={featured ? 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em]' : 'text-[0.58rem] font-black uppercase leading-3 tracking-[0.08em] text-faint'}>
@@ -304,8 +301,8 @@ function RaceStat({ metric, featured }) {
 
 function IdentityCell({ label, value }) {
   return (
-    <div className="border border-[#0E6F97]/45 bg-[#083F5A] px-2.5 py-2">
-      <p className="text-[0.56rem] font-black uppercase tracking-[0.08em] text-[#D8E6EA]">
+    <div className="border border-[#1E6A45]/45 bg-[#0E342B] px-2.5 py-2">
+      <p className="text-[0.56rem] font-black uppercase tracking-[0.08em] text-muted">
         {label}
       </p>
       <p className="mt-1 whitespace-nowrap text-[0.72rem] font-black leading-none text-ink">{value}</p>
@@ -336,15 +333,15 @@ function splitStatValue(value) {
 
 function statCodeFor(label) {
   if (label === 'Active Components') {
-    return 'CMP-FLT-12847';
+    return 'CANOPY-CMP-12847';
   }
 
   if (label === 'Monthly Recurring Revenue') {
-    return 'YLD-MRR-284K';
+    return 'YIELD-NECTAR-284K';
   }
 
   if (label.includes('CO')) {
-    return 'CARB-142T';
+    return 'CARBON-LEAF-142T';
   }
 
   return label;
@@ -353,7 +350,7 @@ function statCodeFor(label) {
 function CommandSignal({ icon: Icon, label, value }) {
   return (
     <div className="min-w-0 flex items-center gap-2">
-      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#083F5A] text-[#D8E6EA]">
+      <div className="toe-pad grid h-7 w-7 shrink-0 place-items-center text-ink">
         <Icon size={14} strokeWidth={2.4} />
       </div>
       <div className="min-w-0">
@@ -368,7 +365,7 @@ function CommandSignal({ icon: Icon, label, value }) {
 
 function MapSignal({ label, value }) {
   return (
-    <div className="rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-2">
+    <div className="rounded-xl border border-[#1E6A45]/45 bg-[#0E342B] px-3 py-2">
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>
@@ -383,18 +380,18 @@ function LondonNetworkMap() {
   );
 
   return (
-    <div className="ops-section overflow-hidden rounded-2xl border border-[#0E6F97]/45 bg-[#092633]">
+    <div className="ops-section overflow-hidden rounded-2xl border border-[#1E6A45]/45 bg-[#0E342B]">
       <svg viewBox="0 0 100 82" className="h-72 w-full" role="img" aria-label="Abstract London component network map">
         <defs>
           <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M10 0H0V10" fill="none" stroke="rgba(216, 230, 234, 0.18)" strokeWidth="0.5" />
+            <path d="M10 0H0V10" fill="none" stroke="rgba(73, 178, 107, 0.16)" strokeWidth="0.5" />
           </pattern>
         </defs>
         <rect width="100" height="82" fill="url(#map-grid)" />
         <path
           d="M8 56C17 63 31 64 42 59C54 54 60 50 72 52C82 54 88 62 94 68"
           fill="none"
-          stroke="rgba(216, 230, 234, 0.28)"
+          stroke="rgba(221, 232, 227, 0.18)"
           strokeWidth="2"
           strokeLinecap="round"
         />
@@ -409,11 +406,11 @@ function LondonNetworkMap() {
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke={active ? '#DFFF00' : '#0E6F97'}
-              strokeDasharray={active ? '3 3' : '0'}
+              stroke={active ? '#C7F000' : '#49B26B'}
+              strokeDasharray={active ? '1 6' : '0'}
               strokeLinecap="round"
               strokeWidth={active ? 1.4 : 0.8}
-              className={active ? 'dispatch-flow' : ''}
+              className={active ? 'migration-flow' : ''}
             />
           );
         })}
@@ -432,7 +429,7 @@ function LondonNetworkMap() {
                   cx={location.x}
                   cy={location.y}
                   r={isWarehouse ? 3.1 : 2.5}
-                  fill={isWarehouse ? '#0E6F97' : '#DFFF00'}
+                  fill={isWarehouse ? '#49B26B' : '#C7F000'}
                   opacity="0.25"
                   style={{ transformOrigin: `${location.x}px ${location.y}px` }}
                 />
@@ -441,14 +438,14 @@ function LondonNetworkMap() {
                 cx={location.x}
                 cy={location.y}
                 r={isWarehouse ? 3.3 : 2.5}
-                fill={isWarehouse ? '#D8E6EA' : '#DFFF00'}
-                stroke={isWarehouse ? '#0E6F97' : '#DFFF00'}
+                fill={isWarehouse ? '#DDE8E3' : '#C7F000'}
+                stroke={isWarehouse ? '#49B26B' : '#C7F000'}
                 strokeWidth={isWarehouse ? 1.7 : 0}
               />
               <text
                 x={location.x + location.labelX}
                 y={location.y + location.labelY}
-                fill="#F7FFFF"
+                fill="#DDE8E3"
                 fontSize="3.35"
                 fontWeight="800"
               >
@@ -457,7 +454,7 @@ function LondonNetworkMap() {
               <text
                 x={location.x + 3.8}
                 y={location.y + 4.8}
-                fill="#8D9389"
+                fill="#9DB6AB"
                 fontSize="2.5"
                 fontWeight="800"
               >

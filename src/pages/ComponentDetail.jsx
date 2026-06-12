@@ -45,7 +45,7 @@ export default function ComponentDetail() {
           <div className="mb-4 flex items-center justify-between gap-3">
             <span className="asset-chip">
               <Route size={12} strokeWidth={2.5} />
-              Asset passport
+              Living passport
             </span>
             <StatusBadge status={component.status} />
           </div>
@@ -64,7 +64,7 @@ export default function ComponentDetail() {
                   `${component.fullType} / ${component.dimensions} / Grade ${component.grade}`}
               </p>
             </div>
-            <div className="rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-2 text-center">
+            <div className="rounded-xl border border-[#1E6A45]/45 bg-[#0E342B] px-3 py-2 text-center">
               <p className="text-[0.62rem] font-black uppercase text-faint">Grade</p>
               <p className="text-2xl font-black text-accent">{component.grade}</p>
             </div>
@@ -75,7 +75,7 @@ export default function ComponentDetail() {
       <section className="ops-card rounded-2xl p-5">
         <div className="ops-section">
           <div className="mb-4 flex items-center justify-between">
-            <p className="ops-kicker">Current lease state</p>
+            <p className="ops-kicker">Attached state</p>
             <CalendarClock size={18} className="text-accent" strokeWidth={2.4} />
           </div>
           <p className="text-2xl font-black leading-8 text-ink">
@@ -104,21 +104,21 @@ export default function ComponentDetail() {
           <div className="ops-section mb-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="ops-kicker">Lifecycle passport</p>
+                <p className="ops-kicker">Migration passport</p>
                 <h2 className="mt-1 text-2xl font-black tracking-normal">
                   Career timeline
                 </h2>
                 <p className="mt-2 text-sm font-bold leading-5 text-muted">
-                  Every placement, inspection and refurbishment becomes part of the object's operating record.
+                  Every placement, inspection and refurbishment becomes part of the object's living record.
                 </p>
               </div>
-              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#083F5A] text-[#D8E6EA]">
+              <div className="toe-pad grid h-11 w-11 shrink-0 place-items-center text-ink">
                 <Stamp size={21} strokeWidth={2.4} />
               </div>
             </div>
           </div>
           <div className="ops-section relative space-y-4">
-            <div className="absolute left-[19px] top-4 h-[calc(100%-2rem)] w-px bg-[#0E6F97]" />
+            <div className="absolute left-[19px] top-4 h-[calc(100%-2rem)] w-px bg-[#49B26B]" />
             {component.timeline.map((event, index) => {
               const Icon = timelineIcons[event.icon] ?? Building2;
               return (
@@ -127,15 +127,15 @@ export default function ComponentDetail() {
                   className="timeline-reveal relative flex gap-4"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#083F5A] text-[#D8E6EA] shadow-soft">
+                  <div className="toe-pad z-10 grid h-10 w-10 shrink-0 place-items-center border text-ink shadow-soft">
                     <Icon size={17} strokeWidth={2.3} />
                   </div>
-                  <div className="min-w-0 flex-1 rounded-2xl border border-[#0E6F97]/45 bg-[#092633] p-4">
+                  <div className="min-w-0 flex-1 rounded-2xl border border-[#1E6A45]/45 bg-[#0E342B] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <p className="text-xs font-black uppercase tracking-[0.06em] text-accent">
                         {event.date}
                       </p>
-                      <span className="rotate-[-2deg] rounded border border-[#DFFF00]/50 bg-[#DFFF00] px-2 py-1 text-[0.58rem] font-black uppercase tracking-[0.08em] text-[#06141C]">
+                      <span className="rotate-[-2deg] rounded-full border border-[#C7F000]/50 bg-[#C7F000] px-2 py-1 text-[0.58rem] font-black uppercase tracking-[0.08em] text-[#071B17]">
                         {event.stamp}
                       </span>
                     </div>
@@ -156,7 +156,7 @@ export default function ComponentDetail() {
       {component.carbonComparison && (
         <section className="ops-card rounded-2xl p-5">
           <div className="ops-section">
-            <p className="ops-kicker">Circulation impact</p>
+            <p className="ops-kicker">Canopy impact</p>
             <h2 className="mt-2 text-3xl font-black leading-9 tracking-normal">
               Avoided {component.carbonAvoided}
             </h2>
@@ -173,14 +173,14 @@ export default function ComponentDetail() {
                   <XAxis type="number" hide domain={[0, 'dataMax + 80']} />
                   <YAxis type="category" dataKey="name" hide />
                   <Tooltip
-                    cursor={{ fill: '#0B2E3A' }}
+                    cursor={{ fill: '#0E342B' }}
                     contentStyle={{
-                      border: '1px solid rgba(223, 255, 0, 0.22)',
-                      borderRadius: 12,
-                      boxShadow: '0 18px 42px rgba(6, 17, 26, 0.14)',
+                      border: '1px solid rgba(199, 240, 0, 0.2)',
+                      borderRadius: 18,
+                      boxShadow: '0 18px 42px rgba(0, 0, 0, 0.28)',
                       fontSize: 12,
-                      background: '#081820',
-                      color: '#F7FFFF',
+                      background: '#0A231B',
+                      color: '#DDE8E3',
                     }}
                     formatter={(value) => [`${value} kgCO\u2082e`, 'Impact']}
                   />
@@ -188,7 +188,7 @@ export default function ComponentDetail() {
                     {component.carbonComparison.map((item, index) => (
                       <Cell
                         key={item.name}
-                        fill={index === 0 ? '#D8E6EA' : '#DFFF00'}
+                        fill={index === 0 ? '#DDE8E3' : '#C7F000'}
                       />
                     ))}
                   </Bar>
@@ -197,7 +197,7 @@ export default function ComponentDetail() {
             </div>
             <div className="mt-3 grid grid-cols-2 gap-3">
               {component.carbonComparison.map((item) => (
-                <div key={item.name} className="rounded-xl bg-[#092633] px-3 py-3">
+                <div key={item.name} className="rounded-xl bg-[#0E342B] px-3 py-3">
                   <p className="text-xs font-black uppercase tracking-[0.05em] text-muted">
                     {item.name}
                   </p>
@@ -221,8 +221,8 @@ export default function ComponentDetail() {
               </div>
               <BadgeCheck size={22} className="text-accent" strokeWidth={2.4} />
             </div>
-            <div className="mt-5 overflow-hidden rounded-2xl border border-[#0E6F97]/45 bg-[#092633]">
-              <div className="grid grid-cols-[1fr_1.3fr_0.6fr] bg-[#0B2E3A] px-3 py-2 text-xs font-black uppercase tracking-[0.06em] text-faint">
+            <div className="mt-5 overflow-hidden rounded-2xl border border-[#1E6A45]/45 bg-[#0E342B]">
+              <div className="grid grid-cols-[1fr_1.3fr_0.6fr] bg-[#071B17] px-3 py-2 text-xs font-black uppercase tracking-[0.06em] text-faint">
                 <span>Date</span>
                 <span>Action</span>
                 <span className="text-right">Cost</span>
@@ -230,7 +230,7 @@ export default function ComponentDetail() {
               {component.maintenanceLog.map((item) => (
                 <div
                   key={`${item.date}-${item.action}`}
-                  className="grid grid-cols-[1fr_1.3fr_0.6fr] border-t border-[#0E6F97]/35 px-3 py-3 text-sm"
+                  className="grid grid-cols-[1fr_1.3fr_0.6fr] border-t border-[#1E6A45]/35 px-3 py-3 text-sm"
                 >
                   <span className="font-black text-ink">{item.date}</span>
                   <span className="font-bold text-muted">{item.action}</span>
@@ -247,7 +247,7 @@ export default function ComponentDetail() {
 
 function FinancialMetric({ label, value, highlight = false }) {
   return (
-    <article className="rounded-2xl border border-[#0E6F97]/45 bg-surface px-3 py-4 shadow-soft">
+    <article className="rounded-2xl border border-[#1E6A45]/45 bg-surface px-3 py-4 shadow-soft">
       <p className="text-[0.63rem] font-black uppercase leading-3 tracking-[0.06em] text-muted">
         {label}
       </p>
@@ -260,11 +260,11 @@ function FinancialMetric({ label, value, highlight = false }) {
 
 function Record({ label, value }) {
   return (
-    <div className="rounded-xl bg-[#092633] px-3 py-3">
+    <div className="rounded-xl bg-[#0E342B] px-3 py-3">
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>
-      <p className="mt-1 truncate text-sm font-black text-ink">{value}</p>
+      <p className="mt-1 break-words text-[0.78rem] font-black leading-4 text-ink">{value}</p>
     </div>
   );
 }

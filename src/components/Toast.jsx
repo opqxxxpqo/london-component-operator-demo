@@ -7,7 +7,7 @@ export default function Toast({ message }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-20 z-50 mx-auto w-full max-w-[430px] px-5">
-      <div className="flex items-center gap-3 rounded-lg bg-accent px-4 py-3 text-sm font-black text-[#06141C] shadow-lift">
+      <div className="flex items-center gap-3 rounded-full bg-accent px-4 py-3 text-sm font-black text-[#071B17] shadow-lift">
         <CheckCircle2 size={18} strokeWidth={2.3} />
         {message}
       </div>

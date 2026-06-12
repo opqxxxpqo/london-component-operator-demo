@@ -10,32 +10,32 @@ export const kpis = [
     label: 'Active Components',
     value: '12,847',
     trend: '+124 this week',
-    signal: 'Live fleet count',
+    signal: 'Live component population',
   },
   {
     label: 'Monthly Recurring Revenue',
     value: `${GBP}284,300`,
     trend: '+8.2%',
-    signal: 'Recurring asset yield',
+    signal: 'Recurring circulation yield',
   },
   {
     label: 'Utilization Rate',
     value: '87.3%',
     trend: '+2.1%',
-    signal: 'City-wide availability',
+    signal: 'Canopy occupancy',
   },
   {
     label: `${CO2} Avoided This Month`,
     value: '142.8 tonnes',
     trend: '+12.4%',
-    signal: 'Demolition displacement',
+    signal: 'Single-use displacement',
   },
 ];
 
 export const operationsPulse = [
-  { label: 'Dispatch lanes active', value: '18', detail: 'Stratford + Hackney Wick' },
-  { label: 'Median redeploy time', value: '31h', detail: 'Last 14 days' },
-  { label: 'Open install windows', value: '7', detail: 'Before Friday' },
+  { label: 'Migration paths active', value: '18', detail: 'Stratford + Hackney Wick' },
+  { label: 'Median regrowth time', value: '31h', detail: 'Last 14 days' },
+  { label: 'Open nest windows', value: '7', detail: 'Before Friday' },
 ];
 
 export const revenueTrend = [
@@ -79,7 +79,7 @@ export const networkLinks = [
 export const activities = [
   {
     type: 'dispatch',
-    text: 'GP-00472 dispatched to Canary Wharf',
+    text: 'GP-00472 migrated to Canary Wharf',
     time: '2h ago',
     lane: 'STF-03',
   },
@@ -97,7 +97,7 @@ export const activities = [
   },
   {
     type: 'warehouse',
-    text: '18 partitions checked into Stratford',
+    text: '18 partitions checked into Stratford seed bank',
     time: '8h ago',
     lane: 'STF-B07',
   },
@@ -109,7 +109,7 @@ export const activities = [
   },
   {
     type: 'move',
-    text: 'PB-00341 routed from Hackney Wick',
+    text: 'PB-00341 migrated from Hackney Wick',
     time: '14h ago',
     lane: 'HWK-02',
   },
@@ -137,7 +137,7 @@ export const components = [
     lastInspection: '2032.07.15',
     nextService: '2033.12',
     currentStatus:
-      'Currently at Canary Wharf, leased to Marshall & Co since June 2029',
+      'Currently attached at Canary Wharf, hosted by Marshall & Co since June 2029',
     detailSubtitle: `Glass Partition ${DOT} 1.2m ${MULTIPLY} 2.6m ${DOT} Grade B`,
     carbonAvoided: `487 kg${CO2}e`,
     carbonComparison: [
@@ -161,7 +161,7 @@ export const components = [
       },
       {
         date: '2029.04',
-        title: 'Returned to Stratford warehouse',
+        title: 'Returned to Stratford seed bank',
         detail: 'Cleaned, inspected and refurbished for redeployment.',
         icon: 'warehouse',
         stamp: 'REFIT PASS',
@@ -189,7 +189,7 @@ export const components = [
       },
       {
         date: '2033.10',
-        title: 'Returned to Stratford warehouse',
+        title: 'Returned to Stratford seed bank',
         detail: 'Available for the next office configuration.',
         icon: 'warehouse',
         stamp: 'READY',
@@ -210,7 +210,7 @@ export const components = [
     fullType: 'Workstation Desk',
     dimensions: `1.4m ${MULTIPLY} 0.8m`,
     status: 'Refurbishing',
-    location: 'Hackney Wick warehouse',
+    location: 'Hackney Wick seed bank',
     grade: 'A',
     roi: '121%',
     initialCost: `${GBP}680`,
@@ -231,7 +231,7 @@ export const components = [
     fullType: 'Phone Booth',
     dimensions: `1.0m ${MULTIPLY} 1.0m`,
     status: 'In Warehouse',
-    location: 'Stratford warehouse',
+    location: 'Stratford seed bank',
     grade: 'B',
     roi: '92%',
     initialCost: `${GBP}4,180`,
@@ -294,7 +294,7 @@ export const components = [
     fullType: 'Chair',
     dimensions: 'Adjustable',
     status: 'In Warehouse',
-    location: 'Park Royal warehouse',
+    location: 'Park Royal seed bank',
     grade: 'A',
     roi: '104%',
     initialCost: `${GBP}390`,
@@ -336,7 +336,7 @@ export const components = [
     fullType: 'Lighting',
     dimensions: '6 module',
     status: 'Refurbishing',
-    location: 'Stratford warehouse',
+    location: 'Stratford seed bank',
     grade: 'C',
     roi: '88%',
     initialCost: `${GBP}870`,
@@ -369,7 +369,7 @@ const matchingSeed = [
   {
     id: 'GP-00472',
     type: 'Glass Partition',
-    warehouse: 'Stratford warehouse',
+    warehouse: 'Stratford seed bank',
     eta: '6h',
     route: 'STF -> EC2A',
     state: 'Reserved',
@@ -377,7 +377,7 @@ const matchingSeed = [
   {
     id: 'WD-01923',
     type: 'Workstation',
-    warehouse: 'Hackney Wick warehouse',
+    warehouse: 'Hackney Wick seed bank',
     eta: '4h',
     route: 'HWK -> EC2A',
     state: 'Pick list',
@@ -385,7 +385,7 @@ const matchingSeed = [
   {
     id: 'PB-00341',
     type: 'Phone Booth',
-    warehouse: 'Stratford warehouse',
+    warehouse: 'Stratford seed bank',
     eta: '6h',
     route: 'STF -> EC2A',
     state: 'QA clear',
@@ -394,11 +394,11 @@ const matchingSeed = [
 
 const generatedMatches = Array.from({ length: 44 }, (_, index) => {
   const catalog = [
-    ['WD', 'Workstation', 'Hackney Wick warehouse', '4h', 'HWK -> EC2A'],
-    ['GP', 'Glass Partition', 'Stratford warehouse', '6h', 'STF -> EC2A'],
-    ['CH', 'Task Chair', 'Hackney Wick warehouse', '5h', 'HWK -> EC2A'],
-    ['LT', 'Lighting Rail', 'Stratford warehouse', '7h', 'STF -> EC2A'],
-    ['MR', 'Meeting Room Pod', 'Hackney Wick warehouse', '8h', 'HWK -> EC2A'],
+    ['WD', 'Workstation', 'Hackney Wick seed bank', '4h', 'HWK -> EC2A'],
+    ['GP', 'Glass Partition', 'Stratford seed bank', '6h', 'STF -> EC2A'],
+    ['CH', 'Task Chair', 'Hackney Wick seed bank', '5h', 'HWK -> EC2A'],
+    ['LT', 'Lighting Rail', 'Stratford seed bank', '7h', 'STF -> EC2A'],
+    ['MR', 'Meeting Room Pod', 'Hackney Wick seed bank', '8h', 'HWK -> EC2A'],
   ];
   const [prefix, type, warehouse, eta, route] = catalog[index % catalog.length];
   const number = String(1924 + index * 17).padStart(5, '0');
@@ -419,14 +419,14 @@ export const installationSchedule = [
   {
     day: 'Day 1',
     time: `08:00${EN_DASH}12:00`,
-    title: 'Component dispatch',
-    detail: 'Warehouse teams pick, scan and load matched components.',
+    title: 'Component migration',
+    detail: 'Seed-bank teams pick, scan and load matched components.',
     progress: 28,
   },
   {
     day: 'Day 1',
     time: `13:00${EN_DASH}18:00`,
-    title: 'Delivery & layout',
+    title: 'Arrival & layout',
     detail: 'Components arrive on site and are staged by floor zone.',
     progress: 52,
   },
