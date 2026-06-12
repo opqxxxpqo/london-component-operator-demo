@@ -11,15 +11,15 @@ export default function MetricCard({ label, value, trend, signal }) {
       : 'text-[2.05rem]';
 
   return (
-    <article className="ops-card rounded-xl p-4">
+    <article className="ops-card min-h-[178px] rounded-xl p-4">
       <div className="ops-section">
         <div className="flex items-start justify-between gap-3">
           <p className="min-h-9 text-xs font-extrabold uppercase leading-4 tracking-[0.06em] text-muted">
             {label}
           </p>
-          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(156,242,42,0.14)]" />
+          <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_rgba(232,255,0,0.18)]" />
         </div>
-        <p className={`metric-rise mt-5 whitespace-nowrap ${valueSizeClass} font-black leading-[0.92] tracking-normal text-ink`}>
+        <p className={`metric-rise mt-4 whitespace-nowrap ${valueSizeClass} font-black leading-[0.92] tracking-normal text-ink`}>
           {hasUnit ? (
             <>
               <span className="block">{valueParts[0]}</span>
@@ -32,8 +32,10 @@ export default function MetricCard({ label, value, trend, signal }) {
             animatedValue
           )}
         </p>
-        <div className="mt-4 flex items-center justify-between gap-2">
-          <p className="text-xs font-extrabold text-accent">{trend}</p>
+        <div className="mt-4 space-y-2">
+          <p className="inline-flex rounded-full border border-[#D6EE00] bg-accent px-2.5 py-1 text-[0.68rem] font-black leading-none text-ink shadow-[0_8px_18px_rgba(232,255,0,0.2)]">
+            {trend}
+          </p>
           {signal && (
             <p className="truncate text-[0.65rem] font-bold uppercase tracking-[0.06em] text-faint">
               {signal}

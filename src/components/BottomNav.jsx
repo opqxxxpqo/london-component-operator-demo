@@ -9,7 +9,7 @@ const tabs = [
 
 export default function BottomNav() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[430px] border-t border-[#D3D5CA] bg-surface px-4 pb-3 pt-2 shadow-[0_-18px_42px_rgba(20,28,25,0.12)]">
+    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[430px] border-t border-[#BED0D7] bg-surface px-4 pb-3 pt-2 shadow-[0_-18px_42px_rgba(6,17,26,0.14)]">
       <div className="grid grid-cols-3 gap-1">
         {tabs.map(({ label, to, icon: Icon }) => (
           <NavLink
@@ -18,7 +18,7 @@ export default function BottomNav() {
             className={({ isActive }) =>
               [
                 'flex flex-col items-center justify-center gap-1 rounded-lg px-2 py-2 text-xs font-semibold transition-colors',
-                isActive ? 'bg-[#101814] text-accent' : 'text-faint',
+                isActive ? 'bg-[#06111A] text-accent' : 'text-faint',
               ].join(' ')
             }
           >
