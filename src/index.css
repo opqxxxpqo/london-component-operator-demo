@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  color: #05080c;
-  background: #b7d8ea;
+  color: #f7ffff;
+  background: #06141c;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -19,7 +19,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #b7d8ea;
+  background: #06141c;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -48,10 +48,10 @@ button {
   position: relative;
   isolation: isolate;
   background:
-    radial-gradient(ellipse at 76% -8%, rgba(238, 249, 254, 0.94), transparent 34%),
-    radial-gradient(ellipse at 8% 0%, rgba(5, 8, 12, 0.18), transparent 31%),
-    radial-gradient(ellipse at 88% 78%, rgba(103, 240, 77, 0.14), transparent 38%),
-    linear-gradient(135deg, #dff2f9 0%, #b7d8ea 50%, #82b8d1 100%);
+    radial-gradient(ellipse at 82% -12%, rgba(14, 111, 151, 0.38), transparent 36%),
+    radial-gradient(ellipse at 8% 0%, rgba(247, 255, 255, 0.08), transparent 28%),
+    radial-gradient(ellipse at 88% 72%, rgba(223, 255, 0, 0.12), transparent 32%),
+    linear-gradient(145deg, #06141c 0%, #0b2e3a 58%, #06141c 100%);
   background-size: auto;
 }
 
@@ -62,10 +62,11 @@ button {
   pointer-events: none;
   content: '';
   background:
-    repeating-radial-gradient(circle at 18% 24%, rgba(5, 8, 12, 0.045) 0 1px, transparent 1px 5px),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.34), transparent 36%, rgba(35, 112, 144, 0.14));
-  opacity: 0.34;
-  mix-blend-mode: multiply;
+    repeating-linear-gradient(135deg, rgba(247, 255, 255, 0.045) 0 1px, transparent 1px 13px),
+    radial-gradient(circle at 18% 24%, rgba(223, 255, 0, 0.08), transparent 26%),
+    linear-gradient(120deg, rgba(247, 255, 255, 0.08), transparent 36%, rgba(14, 111, 151, 0.18));
+  opacity: 0.72;
+  mix-blend-mode: screen;
 }
 
 .route-shell {
@@ -75,18 +76,18 @@ button {
 .ops-card {
   position: relative;
   overflow: hidden;
-  color: #05080c;
-  border: 1px solid rgba(5, 8, 12, 0.12);
+  color: #f7ffff;
+  border: 1px solid rgba(223, 255, 0, 0.18);
   background:
-    radial-gradient(ellipse at 85% -4%, rgba(103, 240, 77, 0.22), transparent 31%),
-    radial-gradient(ellipse at 18% 100%, rgba(15, 115, 152, 0.13), transparent 48%),
-    linear-gradient(145deg, rgba(243, 251, 255, 0.98), rgba(216, 238, 247, 0.96));
+    radial-gradient(ellipse at 86% -12%, rgba(14, 111, 151, 0.36), transparent 36%),
+    radial-gradient(ellipse at 10% 112%, rgba(223, 255, 0, 0.08), transparent 42%),
+    linear-gradient(145deg, rgba(8, 24, 32, 0.82), rgba(5, 17, 24, 0.78));
+  backdrop-filter: blur(16px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(5, 8, 12, 0.08),
-    0 1px 0 rgba(255, 255, 255, 0.62),
-    0 24px 48px rgba(5, 8, 12, 0.15),
-    0 5px 14px rgba(5, 8, 12, 0.09);
+    inset 0 1px 0 rgba(247, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.58),
+    0 28px 64px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(247, 255, 255, 0.03);
 }
 
 .ops-card::before {
@@ -95,11 +96,21 @@ button {
   pointer-events: none;
   content: '';
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 26%),
-    linear-gradient(90deg, rgba(5, 8, 12, 0.035) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(5, 8, 12, 0.025) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 55%);
+    linear-gradient(180deg, rgba(247, 255, 255, 0.12), transparent 34%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(247, 255, 255, 0.26) 0 4px,
+      rgba(6, 20, 28, 0.1) 4px 9px,
+      rgba(223, 255, 0, 0.2) 9px 12px,
+      transparent 12px 20px
+    ),
+    linear-gradient(90deg, rgba(247, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(247, 255, 255, 0.025) 1px, transparent 1px);
+  background-position: 0 0, 100% 0, 0 0, 0 0;
+  background-size: auto, 108px 108px, 30px 30px, 30px 30px;
+  mask-image:
+    radial-gradient(ellipse at 100% 0%, rgba(0, 0, 0, 0.9), transparent 42%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 62%);
 }
 
 .ops-section {
@@ -112,7 +123,7 @@ button {
   inset: 0;
   pointer-events: none;
   content: '';
-  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.7) 42%, transparent 58%);
+  background: linear-gradient(115deg, transparent 0%, rgba(247, 255, 255, 0.2) 42%, transparent 58%);
   opacity: 0;
   transform: translateX(-35%);
   transition: opacity 180ms ease, transform 420ms ease;
@@ -124,7 +135,7 @@ button {
 }
 
 .ops-kicker {
-  color: #0b6f4c;
+  color: #dfff00;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -135,17 +146,18 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid rgba(5, 8, 12, 0.18);
+  border: 1px solid rgba(247, 255, 255, 0.2);
   border-radius: 999px;
   background:
-    linear-gradient(180deg, rgba(205, 255, 185, 0.98), rgba(103, 240, 77, 0.9)),
-    #67f04d;
-  color: #05080c;
+    repeating-linear-gradient(135deg, rgba(6, 20, 28, 0.18) 0 4px, transparent 4px 10px),
+    linear-gradient(180deg, rgba(246, 255, 139, 0.98), rgba(223, 255, 0, 0.92)),
+    #dfff00;
+  color: #06141c;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   padding: 0.32rem 0.55rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68), 0 5px 16px rgba(103, 240, 77, 0.22);
+  box-shadow: inset 0 1px 0 rgba(247, 255, 255, 0.7), 0 0 18px rgba(223, 255, 0, 0.22);
   text-transform: uppercase;
 }
 
@@ -154,38 +166,38 @@ button {
   align-items: center;
   gap: 0.35rem;
   border-radius: 999px;
-  background: rgba(18, 167, 108, 0.16);
-  border: 1px solid rgba(11, 111, 76, 0.18);
-  color: #0b6f4c;
+  background: rgba(14, 111, 151, 0.22);
+  border: 1px solid rgba(216, 230, 234, 0.16);
+  color: #f7ffff;
   font-size: 0.72rem;
   font-weight: 850;
   padding: 0.35rem 0.62rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56);
+  box-shadow: inset 0 1px 0 rgba(247, 255, 255, 0.12), 0 0 16px rgba(14, 111, 151, 0.2);
 }
 
 .readout {
-  color: #f4fbff;
-  border: 1px solid rgba(5, 8, 12, 0.24);
+  color: #f7ffff;
+  border: 1px solid rgba(216, 230, 234, 0.16);
   border-radius: 0.9rem;
   background:
-    linear-gradient(180deg, rgba(7, 16, 24, 0.97), rgba(5, 8, 12, 0.98)),
-    repeating-linear-gradient(90deg, transparent 0, transparent 9px, rgba(103, 240, 77, 0.08) 10px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 12px 28px rgba(5, 8, 12, 0.18);
+    repeating-linear-gradient(135deg, rgba(247, 255, 255, 0.08) 0 2px, transparent 2px 12px),
+    linear-gradient(180deg, rgba(5, 20, 28, 0.98), rgba(2, 8, 12, 0.98));
+  box-shadow: inset 0 1px 0 rgba(247, 255, 255, 0.12), 0 14px 34px rgba(0, 0, 0, 0.34);
 }
 
 .readout .text-ink,
 .command-strip .text-ink {
-  color: #f4fafc;
+  color: #f7ffff;
 }
 
 .readout .text-muted,
 .command-strip .text-muted {
-  color: #d7edf4;
+  color: #d8e6ea;
 }
 
 .readout .text-faint,
 .command-strip .text-faint {
-  color: #7fa2b3;
+  color: #8ea4ae;
 }
 
 .condition-track {
@@ -193,7 +205,7 @@ button {
   height: 0.48rem;
   overflow: hidden;
   border-radius: 999px;
-  background: #83afc4;
+  background: rgba(216, 230, 234, 0.22);
 }
 
 .condition-track::after {
@@ -209,9 +221,9 @@ button {
   height: 100%;
   border-radius: inherit;
   background:
-    linear-gradient(90deg, #67f04d, #12a76c),
-    #67f04d;
-  box-shadow: 0 0 0 1px rgba(5, 8, 12, 0.08), 0 5px 18px rgba(18, 167, 108, 0.24);
+    linear-gradient(90deg, #dfff00, #0e6f97),
+    #dfff00;
+  box-shadow: 0 0 0 1px rgba(223, 255, 0, 0.1), 0 5px 18px rgba(223, 255, 0, 0.18);
 }
 
 .command-strip {
@@ -219,41 +231,48 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  color: #f4fafc;
-  border: 1px solid rgba(5, 8, 12, 0.22);
+  color: #f7ffff;
+  border: 1px solid rgba(223, 255, 0, 0.2);
   border-radius: 1rem;
-  background: linear-gradient(180deg, #071018, #05080c);
+  background:
+    repeating-linear-gradient(135deg, rgba(247, 255, 255, 0.08) 0 3px, transparent 3px 14px),
+    linear-gradient(180deg, #081820, #06141c);
   padding: 0.72rem 0.8rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 14px 30px rgba(5, 8, 12, 0.16);
+  box-shadow: inset 0 1px 0 rgba(247, 255, 255, 0.1), 0 14px 30px rgba(0, 0, 0, 0.32);
 }
 
-[class*="bg-[#05080C]"] {
+[class*="bg-[#05080C]"],
+[class*="bg-[#06141C]"] {
   background:
-    radial-gradient(circle at 30% 0%, rgba(255, 255, 255, 0.16), transparent 32%),
-    linear-gradient(145deg, #102027 0%, #05080c 56%, #010204 100%) !important;
+    radial-gradient(circle at 30% 0%, rgba(247, 255, 255, 0.12), transparent 32%),
+    linear-gradient(145deg, #0b2e3a 0%, #06141c 56%, #02070a 100%) !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
     inset 0 -1px 0 rgba(0, 0, 0, 0.48),
-    0 10px 20px rgba(5, 8, 12, 0.24);
+    0 10px 22px rgba(0, 0, 0, 0.34);
 }
 
 .ops-card [class*="bg-[#D9EEF7]"],
 .ops-card [class*="bg-[#B5D7E6]"],
-.ops-card [class*="bg-[#CFFFAE]"] {
+.ops-card [class*="bg-[#CFFFAE]"],
+.ops-card [class*="bg-[#092633]"],
+.ops-card [class*="bg-[#0E6F97]"],
+.ops-card [class*="bg-[#DFFF00]"] {
   background:
-    radial-gradient(ellipse at 70% 0%, rgba(255, 255, 255, 0.68), transparent 40%),
-    linear-gradient(145deg, #f3fbff 0%, #d7edf6 100%) !important;
-  border-color: rgba(5, 8, 12, 0.1) !important;
+    radial-gradient(ellipse at 70% 0%, rgba(247, 255, 255, 0.09), transparent 42%),
+    linear-gradient(145deg, rgba(14, 111, 151, 0.3), rgba(8, 24, 32, 0.78)) !important;
+  border-color: rgba(216, 230, 234, 0.14) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    inset 0 -1px 0 rgba(5, 8, 12, 0.05),
-    0 8px 18px rgba(5, 8, 12, 0.08);
+    inset 0 1px 0 rgba(247, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.38),
+    0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.ops-card [class*="bg-[#CFFFAE]"] {
+.ops-card [class*="bg-[#CFFFAE]"],
+.ops-card [class*="bg-[#DFFF00]"] {
   background:
-    radial-gradient(ellipse at 70% 0%, rgba(255, 255, 255, 0.7), transparent 40%),
-    linear-gradient(145deg, #e5ffd6 0%, #67f04d 100%) !important;
+    repeating-linear-gradient(135deg, rgba(6, 20, 28, 0.18) 0 4px, transparent 4px 10px),
+    linear-gradient(145deg, #f4ff8e 0%, #dfff00 100%) !important;
 }
 
 .node-pulse {
@@ -262,7 +281,7 @@ button {
 
 .dispatch-flow {
   animation: dispatch-flow 1.5s linear infinite;
-  filter: drop-shadow(0 2px 2px rgba(11, 111, 76, 0.24));
+  filter: drop-shadow(0 2px 3px rgba(223, 255, 0, 0.24));
 }
 
 .timeline-reveal {

@@ -73,7 +73,7 @@ export default function Matching() {
               {matchingProject.reference}
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#05080C] text-accent">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#06141C] text-accent">
             <MapPin size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Matching() {
           {requirements.map((requirement, index) => (
             <div
               key={requirement}
-              className="rounded-xl border border-[#83AFC4] bg-[#D9EEF7] px-3 py-3"
+              className="rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-3"
             >
               <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
                 Line {String(index + 1).padStart(2, '0')}
@@ -121,12 +121,12 @@ export default function Matching() {
               2 warehouses / 6-hour longest ETA / 91% reuse fit
             </p>
           </div>
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#CFFFAE] text-[#0B6F4C]">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#DFFF00] text-[#06141C]">
             <Truck size={22} strokeWidth={2.4} />
           </div>
         </div>
 
-        <div className="ops-section mt-5 divide-y divide-[#83AFC4]">
+        <div className="ops-section mt-5 divide-y divide-[#0E6F97]/35">
           {visibleMatches.map((match) => (
             <div key={match.id} className="py-3.5 first:pt-0 last:pb-0">
               <div className="flex items-start justify-between gap-3">
@@ -149,7 +149,7 @@ export default function Matching() {
                   <p className="truncate text-xs font-black uppercase tracking-[0.05em] text-muted">
                     {match.route}
                   </p>
-                  <span className="rounded-full bg-[#B5D7E6] px-2 py-1 text-[0.62rem] font-black text-[#0B6F4C]">
+                  <span className="rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-accent">
                     {match.state}
                   </span>
                 </div>
@@ -161,7 +161,7 @@ export default function Matching() {
         <button
           type="button"
           onClick={() => setShowAll((current) => !current)}
-          className="ops-section mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#83AFC4] bg-surface px-4 py-3 text-sm font-black text-[#0B6F4C]"
+          className="ops-section mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#0E6F97]/45 bg-surface px-4 py-3 text-sm font-black text-accent"
         >
           {showAll ? (
             <>
@@ -183,17 +183,17 @@ export default function Matching() {
           </h2>
         </div>
         <div className="ops-section relative mt-5 space-y-4">
-          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-px bg-[#83AFC4]" />
+          <div className="absolute left-[19px] top-2 h-[calc(100%-1rem)] w-px bg-[#0E6F97]" />
           {installationSchedule.map((item, index) => (
             <div
               key={`${item.day}-${item.time}`}
               className="timeline-reveal relative flex gap-4"
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#83AFC4] bg-[#05080C] text-accent shadow-soft">
+              <div className="z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#0E6F97]/50 bg-[#06141C] text-accent shadow-soft">
                 <Clock3 size={17} strokeWidth={2.3} />
               </div>
-              <div className="min-w-0 flex-1 rounded-2xl border border-[#83AFC4] bg-[#D9EEF7] px-3 py-3">
+              <div className="min-w-0 flex-1 rounded-2xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-3">
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-xs font-black uppercase tracking-[0.06em] text-accent">
                     {item.day}
@@ -204,7 +204,7 @@ export default function Matching() {
                 <p className="mt-1 text-sm font-semibold leading-5 text-muted">
                   {item.detail}
                 </p>
-                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#83AFC4]">
+                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#0B2E3A]">
                   <div
                     className={`h-full rounded-full ${dispatchConfirmed ? 'bg-transit' : 'bg-accent'}`}
                     style={{ width: `${dispatchConfirmed ? item.progress : Math.max(12, item.progress - 24)}%` }}
@@ -222,7 +222,7 @@ export default function Matching() {
           <h2 className="mt-1 text-2xl font-black tracking-normal">
             Financial summary
           </h2>
-          <div className="mt-5 divide-y divide-[#83AFC4]">
+          <div className="mt-5 divide-y divide-[#0E6F97]/35">
             {matchingFinancials.map((item) => (
               <div key={item.label} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
                 <p className="text-sm font-black text-muted">{item.label}</p>
@@ -236,7 +236,7 @@ export default function Matching() {
       <button
         type="button"
         onClick={confirmDispatch}
-        className={`mb-2 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 text-base font-black text-[#05080C] shadow-lift transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:scale-[0.99] ${
+        className={`mb-2 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 text-base font-black text-[#06141C] shadow-lift transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:scale-[0.99] ${
           dispatchConfirmed ? 'bg-transit' : 'bg-accent'
         }`}
       >
@@ -268,7 +268,7 @@ function DispatchRoute({ active }) {
               <path
                 d="M6 24C36 7 71 41 114 18"
                 fill="none"
-                stroke="#83AFC4"
+                stroke="#0E6F97"
                 strokeLinecap="round"
                 strokeWidth="3"
               />
@@ -276,7 +276,7 @@ function DispatchRoute({ active }) {
                 className="dispatch-flow"
                 d="M6 24C36 7 71 41 114 18"
                 fill="none"
-                stroke={active ? '#12A76C' : '#67F04D'}
+                stroke={active ? '#DFFF00' : '#0E6F97'}
                 strokeDasharray="8 10"
                 strokeLinecap="round"
                 strokeWidth="3"
@@ -293,7 +293,7 @@ function DispatchRoute({ active }) {
 function RoutePoint({ icon: Icon, label, detail }) {
   return (
     <div className="w-20 text-center">
-      <div className="mx-auto grid h-10 w-10 place-items-center rounded-xl border border-[#83AFC4] bg-[#05080C] text-accent shadow-soft">
+      <div className="mx-auto grid h-10 w-10 place-items-center rounded-xl border border-[#0E6F97]/50 bg-[#06141C] text-accent shadow-soft">
         <Icon size={18} strokeWidth={2.4} />
       </div>
       <p className="mt-2 text-xs font-black text-ink">{label}</p>
@@ -308,7 +308,7 @@ function RouteLine() {
   return (
     <div className="flex shrink-0 items-center gap-1">
       <span className="h-2 w-2 rounded-full bg-accent" />
-      <span className="h-px w-8 bg-[#83AFC4]" />
+      <span className="h-px w-8 bg-[#0E6F97]" />
       <span className="h-2 w-2 rounded-full bg-transit" />
     </div>
   );
@@ -316,7 +316,7 @@ function RouteLine() {
 
 function ProjectFact({ label, value }) {
   return (
-    <div className="rounded-xl bg-[#D9EEF7] px-3 py-3">
+    <div className="rounded-xl bg-[#092633] px-3 py-3">
       <p className="text-[0.64rem] font-black uppercase tracking-[0.06em] text-faint">{label}</p>
       <p className="mt-1 text-sm font-black leading-5 text-ink">{value}</p>
     </div>

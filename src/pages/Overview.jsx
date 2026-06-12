@@ -105,7 +105,7 @@ export default function Overview() {
               8 buildings / 3 warehouses / 18 dispatch lanes
             </p>
           </div>
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#05080C] text-accent">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#06141C] text-accent">
             <MapPinned size={20} strokeWidth={2.4} />
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function Overview() {
           </div>
           <Gauge className="text-accent" size={22} strokeWidth={2.3} />
         </div>
-        <div className="ops-section mt-5 divide-y divide-[#83AFC4]">
+        <div className="ops-section mt-5 divide-y divide-[#0E6F97]/35">
           {activities.map((activity) => {
             const Icon = activityIcons[activity.type] ?? RefreshCcw;
             return (
@@ -135,7 +135,7 @@ export default function Overview() {
                 key={`${activity.text}-${activity.time}`}
                 className="relative flex gap-3 py-3.5 first:pt-0 last:pb-0"
               >
-                <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#83AFC4] bg-[#D9EEF7] text-[#0B6F4C]">
+                <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#0E6F97]/45 bg-[#092633] text-accent">
                   <Icon size={16} strokeWidth={2.35} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -143,7 +143,7 @@ export default function Overview() {
                     <p className="text-sm font-extrabold leading-5 text-ink">
                       {activity.text}
                     </p>
-                    <span className="shrink-0 rounded-full bg-[#B5D7E6] px-2 py-1 text-[0.62rem] font-black text-muted">
+                    <span className="shrink-0 rounded-full bg-[#0B2E3A] px-2 py-1 text-[0.62rem] font-black text-muted">
                       {activity.lane}
                     </span>
                   </div>
@@ -173,33 +173,33 @@ export default function Overview() {
         <div className="ops-section h-56">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={revenueTrend} margin={{ top: 12, right: 8, left: 0, bottom: 4 }}>
-              <CartesianGrid stroke="#83AFC4" vertical={false} />
+              <CartesianGrid stroke="rgba(216, 230, 234, 0.14)" vertical={false} />
               <XAxis
                 dataKey="month"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#6E8895', fontSize: 12, fontWeight: 700 }}
+                tick={{ fill: '#8EA4AE', fontSize: 12, fontWeight: 700 }}
               />
               <YAxis hide domain={['dataMin - 8000', 'dataMax + 8000']} />
               <Tooltip
-                cursor={{ stroke: '#83AFC4', strokeWidth: 1 }}
+                cursor={{ stroke: 'rgba(223, 255, 0, 0.28)', strokeWidth: 1 }}
                 contentStyle={{
-                  border: '1px solid #83AFC4',
+                  border: '1px solid rgba(223, 255, 0, 0.22)',
                   borderRadius: 12,
                   boxShadow: '0 18px 42px rgba(6, 17, 26, 0.14)',
                   fontSize: 12,
-                  background: '#E8F5FA',
-                  color: '#05080C',
+                  background: '#081820',
+                  color: '#F7FFFF',
                 }}
                 formatter={(value) => [`\u00a3${value.toLocaleString()}`, 'MRR']}
               />
               <Line
                 type="monotone"
                 dataKey="mrr"
-                stroke="#0B6F4C"
+                stroke="#DFFF00"
                 strokeWidth={3}
-                dot={{ r: 3.5, fill: '#67F04D', stroke: '#E8F5FA', strokeWidth: 2 }}
-                activeDot={{ r: 5, fill: '#67F04D', stroke: '#05080C', strokeWidth: 2 }}
+                dot={{ r: 3.5, fill: '#DFFF00', stroke: '#06141C', strokeWidth: 2 }}
+                activeDot={{ r: 5, fill: '#DFFF00', stroke: '#F7FFFF', strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -212,7 +212,7 @@ export default function Overview() {
 function CommandSignal({ icon: Icon, label, value }) {
   return (
     <div className="min-w-0 flex items-center gap-2">
-      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#05080C] text-accent">
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#06141C] text-accent">
         <Icon size={14} strokeWidth={2.4} />
       </div>
       <div className="min-w-0">
@@ -227,7 +227,7 @@ function CommandSignal({ icon: Icon, label, value }) {
 
 function MapSignal({ label, value }) {
   return (
-    <div className="rounded-xl border border-[#83AFC4] bg-[#D9EEF7] px-3 py-2">
+    <div className="rounded-xl border border-[#0E6F97]/45 bg-[#092633] px-3 py-2">
       <p className="text-[0.62rem] font-black uppercase tracking-[0.06em] text-faint">
         {label}
       </p>
@@ -242,18 +242,18 @@ function LondonNetworkMap() {
   );
 
   return (
-    <div className="ops-section overflow-hidden rounded-2xl border border-[#83AFC4] bg-[#D9EEF7]">
+    <div className="ops-section overflow-hidden rounded-2xl border border-[#0E6F97]/45 bg-[#092633]">
       <svg viewBox="0 0 100 82" className="h-72 w-full" role="img" aria-label="Abstract London component network map">
         <defs>
           <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M10 0H0V10" fill="none" stroke="#9CC6D7" strokeWidth="0.5" />
+            <path d="M10 0H0V10" fill="none" stroke="rgba(216, 230, 234, 0.18)" strokeWidth="0.5" />
           </pattern>
         </defs>
         <rect width="100" height="82" fill="url(#map-grid)" />
         <path
           d="M8 56C17 63 31 64 42 59C54 54 60 50 72 52C82 54 88 62 94 68"
           fill="none"
-          stroke="#6EA6C2"
+          stroke="rgba(216, 230, 234, 0.28)"
           strokeWidth="2"
           strokeLinecap="round"
         />
@@ -268,7 +268,7 @@ function LondonNetworkMap() {
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke={active ? '#12A76C' : '#6EA6C2'}
+              stroke={active ? '#DFFF00' : '#0E6F97'}
               strokeDasharray={active ? '3 3' : '0'}
               strokeLinecap="round"
               strokeWidth={active ? 1.4 : 0.8}
@@ -291,7 +291,7 @@ function LondonNetworkMap() {
                   cx={location.x}
                   cy={location.y}
                   r={isWarehouse ? 3.1 : 2.5}
-                  fill={isWarehouse ? '#12A76C' : '#67F04D'}
+                  fill={isWarehouse ? '#0E6F97' : '#DFFF00'}
                   opacity="0.25"
                   style={{ transformOrigin: `${location.x}px ${location.y}px` }}
                 />
@@ -300,14 +300,14 @@ function LondonNetworkMap() {
                 cx={location.x}
                 cy={location.y}
                 r={isWarehouse ? 3.3 : 2.5}
-                fill={isWarehouse ? '#E8F5FA' : '#67F04D'}
-                stroke={isWarehouse ? '#12A76C' : '#67F04D'}
+                fill={isWarehouse ? '#D8E6EA' : '#DFFF00'}
+                stroke={isWarehouse ? '#0E6F97' : '#DFFF00'}
                 strokeWidth={isWarehouse ? 1.7 : 0}
               />
               <text
                 x={location.x + location.labelX}
                 y={location.y + location.labelY}
-                fill="#05080C"
+                fill="#F7FFFF"
                 fontSize="3.35"
                 fontWeight="800"
               >
